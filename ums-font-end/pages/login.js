@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Login() {
   return (
     <>
@@ -11,11 +12,9 @@ export default function Login() {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" />
         </div>
-        <button type="submit">Login</button>
+        <Link href="student/homepage"> <button type="submit">Login</button> </Link>
       </form>
-      <a href="register">
-        <button>Sing Up</button>
-      </a>
+      <Link href="register"> <button>Sing Up</button> </Link>
     </>
   );
 }
