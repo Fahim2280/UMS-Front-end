@@ -39,9 +39,7 @@ export default function Register() {
         </div>
         <button type="submit">Sign Up</button>
       </form>
-      <Link href="login">
-        <button>Sing In</button>
-      </Link>
+      <Link href="login">Sing In</Link>
     </>
   );
 }
