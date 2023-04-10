@@ -1,4 +1,3 @@
-import Link from "next/link";
 export default function Register() {
   return (
     <>
@@ -38,7 +37,9 @@ export default function Register() {
         </div>
         <button type="submit">Sign Up</button>
       </form>
-      <Link href="login"><button>Sing In</button></Link>
+      <a href="login">
+        <button>Sing In</button>
+      </a>
     </>
   );
 }
