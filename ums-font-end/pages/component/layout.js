@@ -9,15 +9,15 @@ export default function MyLayout(props)
         <Header title={props.title} />
         <nav>
         <Link href="/"> Home</Link>
-        <Link href="/about"> About US</Link>
+        <Link href="/admin/dashboard"> Dashboard</Link>
         
         </nav>
-        <Image src="/ico.png" alt="me" width="64" height="64" />
+
         <main>
 
         </main>
         <div style={{ position: "absolute", bottom: 0, width:"100%" }}>
-            Abc Ecommerce @copyright</div>
+            UMS @copyright</div>
         </>
     )
 }

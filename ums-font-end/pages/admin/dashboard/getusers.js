@@ -23,7 +23,7 @@ export default function GetUsers({ data }) {
   
  export async function getServerSideProps() {
  
-      const response = await axios.get('http://localhost:3000/admin/findadmin/2');
+      const response = await axios.get('http://localhost:3000/admin/findadmin/');
       const data = await response.data;
     
   return { props: { data } }

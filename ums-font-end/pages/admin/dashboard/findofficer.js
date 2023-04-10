@@ -16,7 +16,7 @@ export default function MyPage({ data }) {
     e.preventDefault();
     // redirect to the same page with query params containing the input value
     router.push({
-      pathname: 'findusers',
+      pathname: 'findadmin',
       query: { inputValue: inputValue }
     });
   }
@@ -26,7 +26,7 @@ export default function MyPage({ data }) {
      <MyLayout />
       <form onSubmit={handleFormSubmit}>
         <input type="text" value={inputValue} onChange={handleInputChange} />
-        <button type="submit">Fetch Data</button>
+        <button type="submit">Search</button>
       </form>
       {data.status == null? 
    <UserLayout data={data}/>
@@ -51,7 +51,7 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      data: {status:"enter valid user id"}
+      data: {status:"Enter valid Admin ID"}
     }
   };
 }
