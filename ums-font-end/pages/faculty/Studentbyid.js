@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-
 export default function MyPage({ data }) {
   const [inputValue, setInputValue] = useState();
   const router = useRouter();
@@ -22,9 +21,8 @@ export default function MyPage({ data }) {
 
   return (
     <>
-      <MyLayout />
       <form onSubmit={handleFormSubmit}>
-        <h3>Search Admin by ID</h3>
+        <h3>Search Faculty by ID</h3>
         <input type="text" value={inputValue} onChange={handleInputChange} />
         <button type="submit">Search</button>
       </form>
@@ -34,7 +32,7 @@ export default function MyPage({ data }) {
 }
 
 export async function getServerSideProps({ query }) {
-  inputValue = query.inputValue;
+  const inputValue = query.inputValue;
   try {
     const response = await axios.get(
       "http://localhost:3000/faculty/get/" + inputValue
