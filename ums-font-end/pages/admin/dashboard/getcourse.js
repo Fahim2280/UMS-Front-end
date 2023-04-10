@@ -18,7 +18,7 @@ export default function GetNotice({ data }) {
             
         ))}
       </ul>
-      <button type="button" onClick={() => router.back()}>Click here to go back </button>
+      <button type="button" onClick={() => router.back()}>GO BACK </button>
     </>
   );
   }

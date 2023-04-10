@@ -12,7 +12,7 @@ const router = useRouter();
       <h2>Subject: {data.Nsub}</h2>
       <h2>Notice: {data.Ndetails}</h2>
      <br></br>
-      <button type="button" onClick={() => router.back()}>Click here to go back </button>
+      <button type="button" onClick={() => router.back()}>GO BACK </button>
      
       </>
     )
