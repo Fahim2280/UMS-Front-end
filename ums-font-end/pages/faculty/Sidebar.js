@@ -14,26 +14,24 @@ import AddStudentGrade from "./addStudentGrade";
 import UpdateStudentGrade from "./updateStudentGrade";
 import DeleteStudentGrade from "./deleteStudentGrade";
 import AllStudentGrade from "./allStudentGrade";
-import AllFacultyInfo from "./allfacultyInfo";
 
 function Sidebar({ onButtonClick }) {
   return (
     <div className="sidebar">
       <button onClick={() => onButtonClick(1)}>Add Notice</button>
-      <button onClick={() => onButtonClick(2)}>Show all Faculty Info</button>
-      <button onClick={() => onButtonClick(3)}>Upadate Notice</button>
-      <button onClick={() => onButtonClick(4)}>Delete Notice</button>
-      <button onClick={() => onButtonClick(5)}>Show all Notice</button>
-      <button onClick={() => onButtonClick(6)}>Request Room</button>
-      <button onClick={() => onButtonClick(7)}>Upadate Request Room</button>
-      <button onClick={() => onButtonClick(8)}>Delete Request Room</button>
-      <button onClick={() => onButtonClick(9)}>Show all Request Room</button>
-      <button onClick={() => onButtonClick(10)}>Add Student Grade</button>
-      <button onClick={() => onButtonClick(11)}>Update Student Grade</button>
-      <button onClick={() => onButtonClick(12)}>Delete Student Grade</button>
-      <button onClick={() => onButtonClick(13)}>Show all Student Grade</button>
-      <button onClick={() => onButtonClick(14)}>Sing In</button>
-      <button onClick={() => onButtonClick(15)}>Sing Up</button>
+      <button onClick={() => onButtonClick(2)}>Upadate Notice</button>
+      <button onClick={() => onButtonClick(3)}>Delete Notice</button>
+      <button onClick={() => onButtonClick(4)}>Show all Notice</button>
+      <button onClick={() => onButtonClick(5)}>Request Room</button>
+      <button onClick={() => onButtonClick(6)}>Upadate Request Room</button>
+      <button onClick={() => onButtonClick(7)}>Delete Request Room</button>
+      <button onClick={() => onButtonClick(8)}>Show all Request Room</button>
+      <button onClick={() => onButtonClick(9)}>Add Student Grade</button>
+      <button onClick={() => onButtonClick(10)}>Update Student Grade</button>
+      <button onClick={() => onButtonClick(11)}>Delete Student Grade</button>
+      <button onClick={() => onButtonClick(12)}>Show all Student Grade</button>
+      <button onClick={() => onButtonClick(13)}>Sing In</button>
+      <button onClick={() => onButtonClick(14)}>Sing Up</button>
     </div>
   );
 }
@@ -46,45 +44,42 @@ function DataDisplay({ selectedButton }) {
     return <AddNotice />;
   }
   if (selectedButton === 2) {
-    return <AllFacultyInfo />;
-  }
-  if (selectedButton === 3) {
     return <UpdateNotice />;
   }
-  if (selectedButton === 4) {
+  if (selectedButton === 3) {
     return <DeleteNotice />;
   }
-  if (selectedButton === 5) {
+  if (selectedButton === 4) {
     return <AllNotice />;
   }
-  if (selectedButton === 6) {
+  if (selectedButton === 5) {
     return <RequestRoom />;
   }
-  if (selectedButton === 7) {
+  if (selectedButton === 6) {
     return <UpdateRequestRoom />;
   }
-  if (selectedButton === 8) {
+  if (selectedButton === 7) {
     return <DeleteRequestRoom />;
   }
-  if (selectedButton === 9) {
+  if (selectedButton === 8) {
     return <AllRequestRoom />;
   }
-  if (selectedButton === 10) {
+  if (selectedButton === 9) {
     return <AddStudentGrade />;
   }
-  if (selectedButton === 11) {
+  if (selectedButton === 10) {
     return <UpdateStudentGrade />;
   }
-  if (selectedButton === 12) {
+  if (selectedButton === 11) {
     return <DeleteStudentGrade />;
   }
-  if (selectedButton === 13) {
+  if (selectedButton === 12) {
     return <AllStudentGrade />;
   }
-  if (selectedButton === 14) {
+  if (selectedButton === 13) {
     return <Login />;
   }
-  if (selectedButton === 15) {
+  if (selectedButton === 14) {
     return <Register />;
   }
   return (
