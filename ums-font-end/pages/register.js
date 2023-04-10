@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-=======
+
 import Link from "next/link";
 
->>>>>>> Fahim
 export default function Register() {
   return (
     <>
@@ -42,13 +40,10 @@ export default function Register() {
         </div>
         <button type="submit">Sign Up</button>
       </form>
-<<<<<<< HEAD
       <a href="login">
         <button>Sing In</button>
       </a>
-=======
       <Link href="login">Sing In</Link>
->>>>>>> Fahim
     </>
   );
 }
