@@ -24,6 +24,7 @@ export default function AllFacultyInfo() {
         <thead>
           <tr>
             <th>Id</th>
+            <th>FIDD</th>
             <th>Name</th>
             <th>Department</th>
             <th>program</th>
@@ -36,14 +37,15 @@ export default function AllFacultyInfo() {
         <tbody>
           {data.map((faculty) => (
             <tr key={faculty.id}>
-              <td>{faculty.id}</td>
-              <td>{faculty.name}</td>
-              <td>{faculty.department}</td>
-              <td>{faculty.program}</td>
-              <td>{faculty.address}</td>
-              <td>{faculty.phone}</td>
+              <td>{faculty.Fid}</td>
+              <td>{faculty.Fidd}</td>
+              <td>{faculty.Fname}</td>
+              <td>{faculty.Fdep}</td>
+              <td>{faculty.Fprogram}</td>
+              <td>{faculty.Faddress}</td>
+              <td>{faculty.Fnum}</td>
               <td>{faculty.dob}</td>
-              <td>{faculty.salary}</td>
+              <td>{faculty.Fsal}</td>
             </tr>
           ))}
         </tbody>

@@ -1,4 +1,21 @@
+import { useState, useEffect } from "react";
+
 export default function AllRequestRoom() {
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("http://localhost:3000/faculty/getrequestroom")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>Data not Found!!!</p>;
   return (
     <>
       <h2>Show All Request Room</h2>
@@ -7,30 +24,24 @@ export default function AllRequestRoom() {
         <thead>
           <tr>
             <th>Id</th>
+            <th>Fid</th>
             <th>Room</th>
+            <th>reason</th>
             <th>Date</th>
             <th>Time</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>101</td>
-            <td>12/06/2021</td>
-            <td>10:00 AM</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>102</td>
-            <td>12/06/2021</td>
-            <td>09:00 Am</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>103</td>
-            <td>12/06/2021</td>
-            <td>08:00 Am</td>
-          </tr>
+          {data.map((request) => (
+            <tr key={request.id}>
+              <td>{request.id}</td>
+              <td>{request.Fid}</td>
+              <td>{request.room}</td>
+              <td>{request.reason}</td>
+              <td>{request.date}</td>
+              <td>{request.time}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
