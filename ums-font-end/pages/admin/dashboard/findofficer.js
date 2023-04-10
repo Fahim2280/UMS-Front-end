@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import MyLayout from '@/pages/component/layout';
-import UserLayout from '@/pages/component/userdata';
+import OfficerLayout from '@/pages/component/officerdata';
 
 export default function MyPage({ data }) {
   const [inputValue, setInputValue] = useState();
@@ -16,7 +16,7 @@ export default function MyPage({ data }) {
     e.preventDefault();
     // redirect to the same page with query params containing the input value
     router.push({
-      pathname: 'findadmin',
+      pathname: 'findofficer',
       query: { inputValue: inputValue }
     });
   }
@@ -25,11 +25,12 @@ export default function MyPage({ data }) {
     <>
      <MyLayout />
       <form onSubmit={handleFormSubmit}>
+      <h3>Search Officer by ID</h3>
         <input type="text" value={inputValue} onChange={handleInputChange} />
         <button type="submit">Search</button>
       </form>
       {data.status == null? 
-   <UserLayout data={data}/>
+   <OfficerLayout data={data}/>
       : data.status }
     </>
   );
@@ -38,7 +39,7 @@ export default function MyPage({ data }) {
 export async function getServerSideProps({ query }) {
   const inputValue = query.inputValue;
   try {
-  const response = await axios.get('http://localhost:3000/admin/findadmin/'+inputValue);
+  const response = await axios.get('http://localhost:3000/admin/findOfficerByid/'+inputValue);
   const data = await response.data;
 
   return {
@@ -51,7 +52,7 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      data: {status:"Enter valid Admin ID"}
+      data: {status:"Enter valid Officer ID"}
     }
   };
 }
