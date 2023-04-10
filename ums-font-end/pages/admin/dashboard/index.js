@@ -8,9 +8,28 @@ export default function AdminDashboard() {
       <MyLayout title="Admin DashBoard"/>
       <h1>Admin Dashboard</h1>
 
-    <Link href="/admin/dashboard/getusers">See All Users</Link>
     <br></br>
-    <Link href="/admin/dashboard/findusers">Find Users by ID</Link>
+    <Link href="/admin/dashboard/findadmin">Find Admin by ID</Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/findstudent">Search Student by Name</Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/findfaculty">Search Faculty by Depertment</Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/findofficer">Search Official</Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/getnotice">All Notice</Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/getstudents">All Student </Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/getcourse">All Course</Link>
+    <br></br>
       </>
     )
   }
+

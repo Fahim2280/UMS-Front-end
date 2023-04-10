@@ -3,17 +3,17 @@ import MyLayout from "@/pages/component/layout"
 import axios from "axios";
 
 
-export default function GetUsers({ data }) {
+export default function GetNotice({ data }) {
     
   return (
       <>
-       <MyLayout title="Get Users"/>
-      <h1>All Users</h1>
+       <MyLayout title="Get Notice"/>
+      <h1>All Notice</h1>
       <ul>
         {data.map(item => (
-          <li key={item.id}>
+          <li key={item.Nid}>
       
-        <Link href={"/admin/dashboard/users/"+item.id}>{item.name}</Link>
+        <Link href={"/admin/dashboard/users/"+item.Nid}>{item.Nsub}</Link>
             </li>
         ))}
       </ul>
@@ -23,7 +23,7 @@ export default function GetUsers({ data }) {
   
  export async function getServerSideProps() {
  
-      const response = await axios.get('http://localhost:3000/admin/findadmin/');
+      const response = await axios.get('http://localhost:3000/admin/findallnotice/');
       const data = await response.data;
     
   return { props: { data } }
