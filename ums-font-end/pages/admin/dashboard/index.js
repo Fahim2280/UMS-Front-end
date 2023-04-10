@@ -13,7 +13,7 @@ export default function AdminDashboard() {
     <br></br>
     <Link href="/admin/dashboard/findstudent">Search Student by Name</Link>
     <br></br>
-    <Link href="/admin/dashboard/findfaculty">Search Faculty by ID</Link>
+    <Link href="/admin/dashboard/findfaculty">Search Faculty by Depertment</Link>
     <br></br>
     <Link href="/admin/dashboard/findofficer">Search Official</Link>
     <br></br>
@@ -21,7 +21,7 @@ export default function AdminDashboard() {
     <br></br>
     <Link href="/admin/dashboard/getstudents">All Student </Link>
     <br></br>
-    <Link href="/admin/dashboard/findadmin">All Course</Link>
+    <Link href="/admin/dashboard/getcourse">All Course</Link>
     <br></br>
       </>
     )

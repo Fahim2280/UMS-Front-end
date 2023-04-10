@@ -25,21 +25,23 @@ export default function MyPage({ data }) {
     <>
      <MyLayout />
       <form onSubmit={handleFormSubmit}>
-        <h3>Search Faculty by ID</h3>
+        <h3>Search Faculty by Depertment</h3>
         <input type="text" value={inputValue} onChange={handleInputChange} />
         <button type="submit">Search</button>
       </form>
       {data.status == null? 
    <FacultyLayout data={data}/>
       : data.status }
+      
     </>
+    
   );
 }
 
 export async function getServerSideProps({ query }) {
   const inputValue = query.inputValue;
   try {
-  const response = await axios.get('http://localhost:3000/admin/findFaculty/'+inputValue);
+  const response = await axios.get('http://localhost:3000/admin/findFacultydep/'+inputValue);
   const data = await response.data;
 
   return {
@@ -52,7 +54,7 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      data: {status:"Enter valid Faculty ID"}
+      data: {status:"Enter valid Faculty Dep"}
     }
   };
 }
