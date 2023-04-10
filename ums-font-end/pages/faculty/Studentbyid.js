@@ -1,44 +1,56 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
-export default function Studentbyid() {
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(false);
-  const [id, setSearchId] = useState("");
 
-  const handleSearch = () => {
-    setLoading(true);
-    fetch(`http://localhost:3000/faculty/get/${id}`) // Update API endpoint with search ID
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
+export default function MyPage({ data }) {
+  const [inputValue, setInputValue] = useState();
+  const router = useRouter();
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>Data not Found!!!</p>;
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // redirect to the same page with query params containing the input value
+    router.push({
+      pathname: "findadmin",
+      query: { inputValue: inputValue },
+    });
+  };
 
   return (
     <>
-      {/* Add search input and search button */}
-      <input
-        type="text"
-        value={searchId}
-        onChange={(e) => setSearchId(e.target.value)}
-        placeholder="Enter Student ID"
-      />
-      <button onClick={handleSearch}>Search</button>
-      <tbody>
-        {data.map((grade) => (
-          <tr key={grade.id}>
-            <td>{grade.id}</td>
-            <td>{grade.studentId}</td>
-            <td>{grade.curseId}</td>
-            <td>{grade.subject}</td>
-            <td>{grade.grade}</td>
-          </tr>
-        ))}
-      </tbody>
+      <MyLayout />
+      <form onSubmit={handleFormSubmit}>
+        <h3>Search Admin by ID</h3>
+        <input type="text" value={inputValue} onChange={handleInputChange} />
+        <button type="submit">Search</button>
+      </form>
+      {data.status == null ? <UserLayout data={data} /> : data.status}
     </>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  inputValue = query.inputValue;
+  try {
+    const response = await axios.get(
+      "http://localhost:3000/faculty/get/" + inputValue
+    );
+    const data = await response.data;
+
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: { status: "Enter valid Faculty ID" },
+      },
+    };
+  }
 }
