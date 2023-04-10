@@ -1,4 +1,21 @@
+import { useState, useEffect } from "react";
+
 export default function AllNotice() {
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("http://localhost:3000/faculty/getnotice")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>Data not Found!!!</p>;
   return (
     <>
       <h2>All Notice</h2>
@@ -11,31 +28,13 @@ export default function AllNotice() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Exam</td>
-            <td>Exam will be held on 12th june</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Exam</td>
-            <td>Exam will be held on 12th june</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Exam</td>
-            <td>Exam will be held on 12th june</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Exam</td>
-            <td>Exam will be held on 12th june</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Exam</td>
-            <td>Exam will be held on 12th june</td>
-          </tr>
+          {data.map((notice) => (
+            <tr key={notice.id}>
+              <td>{notice.id}</td>
+              <td>{notice.subject}</td>
+              <td>{notice.Details}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
