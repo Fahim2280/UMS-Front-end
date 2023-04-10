@@ -1,7 +1,10 @@
-export default function Register() {
+import Link from "next/link";
+import MyLayout from "./layout";
+export default function addInfo() {
   return (
     <>
-      <h2>Sing In</h2>
+    <MyLayout></MyLayout>
+      <h2>Add Info</h2>
       <form>
         <div>
           <label htmlFor="name">Name</label>
@@ -35,11 +38,8 @@ export default function Register() {
           <label htmlFor="salary">Salary</label>
           <input type="number" name="salary" id="salary" />
         </div>
-        <button type="submit">Sign Up</button>
+        <Link href="homepage"><button type="submit">done</button></Link>
       </form>
-      <a href="login">
-        <button>Sing In</button>
-      </a>
     </>
   );
 }
