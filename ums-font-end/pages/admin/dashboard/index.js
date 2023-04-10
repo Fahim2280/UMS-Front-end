@@ -17,13 +17,12 @@ export default function AdminDashboard() {
     <br></br>
     <Link href="/admin/dashboard/findofficer">Search Official</Link>
     <br></br>
-    <Link href="/admin/dashboard/findadmin">All Notice</Link>
+    <Link href="/admin/dashboard/getnotice">All Notice</Link>
     <br></br>
     <Link href="/admin/dashboard/findadmin">All Student Grade</Link>
     <br></br>
     <Link href="/admin/dashboard/findadmin">All Course</Link>
     <br></br>
-    <Link href="/admin/dashboard/getusers">See All Users</Link>
       </>
     )
   }

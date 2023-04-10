@@ -37,7 +37,7 @@ export default function MyPage({ data }) {
 }
 
 export async function getServerSideProps({ query }) {
-  inputValue = query.inputValue;
+  const inputValue = query.inputValue;
   try {
   const response = await axios.get('http://localhost:3000/admin/findadmin/'+inputValue);
   const data = await response.data;
