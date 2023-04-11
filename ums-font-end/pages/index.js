@@ -7,13 +7,8 @@ export default function Home() {
     <>
     <MyLayout title="Home"/>
     <h1>Home Page</h1>
-    <h3>Loren Posem .....</h3>
+    <h3>University managment System</h3>
     <Link href="/admin/dashboard/">DashBoard</Link>
-    <ul >
-        {names.map((name) => (
-          <li key={name}> {name} </li>
-        ))}
-      </ul>
     </>
   )
 }
