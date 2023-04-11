@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import AllStudentG from "./userData";
 
 export default function MyPage({ data }) {
   const [inputValue, setInputValue] = useState();
@@ -14,7 +15,7 @@ export default function MyPage({ data }) {
     e.preventDefault();
     // redirect to the same page with query params containing the input value
     router.push({
-      pathname: "findadmin",
+      pathname: "Studentbyid",
       query: { inputValue: inputValue },
     });
   };
@@ -26,7 +27,7 @@ export default function MyPage({ data }) {
         <input type="text" value={inputValue} onChange={handleInputChange} />
         <button type="submit">Search</button>
       </form>
-      {data.status == null ? <UserLayout data={data} /> : data.status}
+      {data.status == null ? <AllStudentG data={data} /> : data.status}
     </>
   );
 }
