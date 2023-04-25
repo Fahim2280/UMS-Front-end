@@ -1,12 +1,15 @@
 import Link from "next/link"
 import MyLayout from "@/pages/component/layout"
 import axios from "axios";
+import { useRouter } from 'next/router'
+import SessionCheck from '../../component/sessioncheck'
 
 
 export default function GetUsers({ data }) {
-    
+  const router = useRouter();
   return (
       <>
+      <SessionCheck />
        <MyLayout title="Get Users"/>
       <h1>All Users</h1>
       <ul>
@@ -17,6 +20,9 @@ export default function GetUsers({ data }) {
             </li>
         ))}
       </ul>
+      <button type="button" onClick={() => router.back()}>
+      Click here to go back
+    </button>
     </>
   );
   }

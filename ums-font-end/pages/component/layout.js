@@ -10,12 +10,12 @@ export default function MyLayout(props)
         <nav>
         <Link href="/"> Home</Link>
         <Link href="/admin/dashboard"> Dashboard</Link>
-        
         </nav>
 
         <main>
 
         </main>
+        
         <div style={{ position: "absolute", bottom: 0, width:"100%" }}>
             UMS @copyright</div>
         </>

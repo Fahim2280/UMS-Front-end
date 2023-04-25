@@ -29,6 +29,10 @@ export default function AdminDashboard() {
     <br></br>
     <Link href="/admin/dashboard/getcourse">All Course</Link>
     <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/addadmin">Register</Link>
+    <br></br>
+    <br></br>
       </>
     )
   }
