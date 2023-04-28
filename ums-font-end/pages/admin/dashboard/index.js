@@ -33,6 +33,15 @@ export default function AdminDashboard() {
     <Link href="/admin/dashboard/addadmin">Register</Link>
     <br></br>
     <br></br>
+    <Link href="/signin">Signin</Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/addstudent">Add Student</Link>
+    <br></br>
+    <br></br>
+    <Link href="/admin/dashboard/deletestudent">Delete Student</Link>
+    <br></br>
+    <br></br>
       </>
     )
   }

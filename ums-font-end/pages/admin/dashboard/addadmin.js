@@ -44,7 +44,6 @@ const validateFile = (value) => {
                 }
             });
 
-
             setSuccess('Admin add successfully');
             reset();
 
@@ -52,7 +51,7 @@ const validateFile = (value) => {
         catch (error) {
             //console.log(error.response.data.message);
 
-            setSuccess('Admin add successfully -  ' );
+            setSuccess('Admin add successfully -err  ' );
 
         }
 
@@ -91,11 +90,11 @@ const validateFile = (value) => {
                     )}
                 </div>
                 <div>
-                    <label htmlFor="email">Password</label>
+                    <label htmlFor="pass">Password</label>
                     <input
                         type="password"
-                        id="password"
-                        {...register('password', { required: true, pattern: /^\d+$/, minLength: 5 })}
+                        id="pass"
+                        {...register('pass', { required: true, pattern: /^\d+$/, minLength: 5 })}
                     />
                     {errors.password && (
                         <p>
