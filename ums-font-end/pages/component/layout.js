@@ -10,6 +10,7 @@ export default function MyLayout(props)
         <nav>
         <Link href="/"> Home</Link>
         <Link href="/admin/dashboard"> Dashboard</Link>
+        <Link href="http://localhost:3000/admin/signout"> LogOut</Link>
         </nav>
 
         <main>
