@@ -5,13 +5,13 @@ import { useRouter } from 'next/router'
 import SessionCheck from '../../component/sessioncheck'
 
 export default function DeleteFaculty() {
-  const [facultyId, setfacultyId] = useState('');
+  const [Fid, setfacultyId] = useState('');
   const [status, setStatus] = useState('');
   const router = useRouter();
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete('http://localhost:3000/admin/deleteFaculty/', { data: { Fid: facultyId } });
+      const response = await axios.delete('http://localhost:3000/admin/deleteFaculty/', { data: { Fid: Fid } });
       setStatus(`Faculty with ID ${Fid} has been deleted.`);
     } catch (error) {
       setStatus(`Error deleting Faculty: ${error.message}`);
@@ -26,7 +26,7 @@ export default function DeleteFaculty() {
       <input
         type="text"
         id="faculty-id"
-        value={facultyId}
+        value={Fid}
         onChange={(e) => setfacultyId(e.target.value)}
       />
       <button onClick={handleDelete}>Delete</button>

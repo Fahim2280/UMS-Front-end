@@ -5,14 +5,14 @@ import { useRouter } from 'next/router'
 import SessionCheck from '../../component/sessioncheck'
 
 export default function DeleteOfficer() {
-  const [officerId, setofficerId] = useState('');
+  const [Oid, setofficerId] = useState('');
   const [status, setStatus] = useState('');
   const router = useRouter();
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete('http://localhost:3000/admin/deleteOfficer/', { data: { Oid: officerId } });
-      setStatus(`Officer has been deleted.`);
+      const response = await axios.delete('http://localhost:3000/admin/deleteOfficer/', { data: { Oid: Oid } });
+      setStatus(`Notice with ID ${Oid} has been deleted.`);
     } catch (error) {
       setStatus(`Error deleting officer: ${error.message}`);
     }
@@ -26,9 +26,8 @@ export default function DeleteOfficer() {
       <input
         type="text"
         id="officer-id"
-        value={officerId}
+        value={Oid}
         onChange={(e) => setofficerId(e.target.value)}
-        required
       />
       <button onClick={handleDelete}>Delete</button>
       <div>{status}</div>

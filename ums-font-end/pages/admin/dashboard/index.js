@@ -51,6 +51,9 @@ export default function AdminDashboard() {
     <Link href="/admin/dashboard/deletecourse">Delete Course</Link>
     <br></br>
     <br></br>
+    <Link href="/admin/dashboard/deletenotice">Delete Notice</Link>
+    <br></br>
+    <br></br>
       </>
     )
   }
