@@ -12,18 +12,18 @@ export default function Updatenotice() {
   useEffect(() => {
     axios
       .get("http://localhost:3000/faculty/getnotice" + id)
-      .then(res => setdata(res.data))
-      .catch(err => console.log(err));
+      .then((res) => setdata(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .put("http://localhost:3000/faculty/getnotice" + id, Data)
-      .then(res => {
+      .put("http://localhost:3000/faculty/updatenotice" + id, Data)
+      .then((res) => {
         alert("Notice Updated");
         //naveigate("/allNotice");
-      })
+      });
   }
   return (
     <>
@@ -38,10 +38,9 @@ export default function Updatenotice() {
           <input
             type="text"
             name=" subject"
-            disabled
             Value={Data.subject}
             id=" subject"
-            onChange={(e) => setData({ ...Data, subject: e.target.value })}
+            onChange={(e) => setdata({ ...Data, subject: e.target.value })}
           />
         </div>
         <div>
@@ -51,7 +50,7 @@ export default function Updatenotice() {
             name=" details"
             Value={Data.Details}
             id=" details"
-            onChange={(e) => setData({ ...Data, Details: e.target.value })}
+            onChange={(e) => setdata({ ...Data, Details: e.target.value })}
           />
         </div>
         <button type="submit">Upadate Notice</button>
