@@ -57,6 +57,9 @@ export default function AdminDashboard() {
     <Link href="/admin/dashboard/updatecourse">UPdate Course</Link>
     <br></br>
     <br></br>
+    <Link href="/admin/dashboard/updatenotice">UPdate Notice</Link>
+    <br></br>
+    <br></br>
     <Link href="/admin/dashboard/deletestudent">Delete Student</Link>
     <br></br>
     <br></br>
