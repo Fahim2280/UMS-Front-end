@@ -51,7 +51,7 @@ export default function AllNotice() {
                 <Link href={`./updatenotice/${notice.id}`}>Update</Link>
                 <button onClick={(e) => handleSubmit(notice.id)}>Delete</button>
               </td>
-            </tr>
+            </tr> 
           ))}
         </tbody>
       </table>
