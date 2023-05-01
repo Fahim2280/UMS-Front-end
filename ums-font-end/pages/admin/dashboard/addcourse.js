@@ -24,7 +24,6 @@ export default function AddCourse() {
     });
 
     if (!response.ok) {
-      //throw new Error(response.statusText);
       console.log(response.statusText);
     }
 

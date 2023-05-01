@@ -1,6 +1,10 @@
 import { useState } from "react";
+import MyLayout from "@/pages/component/layout"
+import { useRouter } from 'next/router'
+import SessionCheck from '../../component/sessioncheck'
 
 export default function UpdateStudent() {
+    const router = useRouter();
   const [Sid, setId] = useState("");
   const [Sidd, setIdd] = useState("");
   const [Sname, setName] = useState("");
@@ -49,8 +53,8 @@ export default function UpdateStudent() {
 
   return (
     <form onSubmit={handleUpdateStudent}>
+         <MyLayout title="Add Faculty"/>
       <h1>Update Student Data</h1>
-
      
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 

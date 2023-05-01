@@ -5,14 +5,13 @@ import SessionCheck from '../../component/sessioncheck'
 
 export default function UpdateStudent() {
     const router = useRouter();
-  const [Fid, setId] = useState("");
-  const [Fidd, setIdd] = useState("");
-  const [Fname, setName] = useState("");
-  const [Fprogram, setProgram] = useState("");
-  const [Fdep, setDep] = useState("");
-  const [Faddress, setAddress] = useState("");
-  const [Fnum, setNum] = useState("");
-  const [Fdob, setDob] = useState("");
+  const [Oid, setId] = useState("");
+  const [Oidd, setIdd] = useState("");
+  const [Oname, setName] = useState("");
+  const [Odep, setDep] = useState("");
+  const [Oaddress, setAddress] = useState("");
+  const [Onum, setNum] = useState("");
+  const [Odob, setDob] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -20,12 +19,12 @@ export default function UpdateStudent() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:3000/admin/updateFaculty/`, {
+      const res = await fetch(`http://localhost:3000/admin/updateOfficer/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ Fid,Fidd, Fname, Fprogram, Fdep,Faddress,Fnum,Fdob}),
+        body: JSON.stringify({ Oid,Oidd, Oname, Odep,Oaddress,Onum,Odob}),
       });
 
       const data = await res.json();
@@ -35,13 +34,12 @@ export default function UpdateStudent() {
         setId("");
         setIdd("");
         setName("");
-        setProgram("");
         setDep("");
         setAddress("");
         setNum("");
         setDob("");
       } else {
-        setSuccessMessage("Faculty data updated successfully.");
+        setSuccessMessage("Officer data updated successfully.");
         setErrorMessage(data.message);
       }
     } catch (err) {
@@ -52,71 +50,63 @@ export default function UpdateStudent() {
 
   return (
     <form onSubmit={handleUpdateStudent}>
-        <MyLayout title="Add Faculty"/>
-      <h1>Update Faculty Data</h1>
+        <MyLayout title="Update Officer"/>
+      <h1>Update Officer Data</h1>
 
-      <label htmlFor="Fid">ID:</label>
+      <label htmlFor="Oid">ID:</label>
       <input
         type="number"
-        id="Fid"
-        value={Fid}
+        id="Oid"
+        value={Oid}
         onChange={(e) => setId(e.target.value)}
       />
       <br/>
-      <label htmlFor="Fidd">Faculty ID:</label>
+      <label htmlFor="Oidd">Officer ID:</label>
       <input
-        type="number"
-        id="Fidd"
-        value={Fidd}
+        type="text"
+        id="Oidd"
+        value={Oidd}
         onChange={(e) => setIdd(e.target.value)}
       />
       <br/>
 
-      <label htmlFor="Fname">Name:</label>
+      <label htmlFor="Oname">Name:</label>
       <input
         type="text"
-        id="Fname"
-        value={Fname}
+        id="Oname"
+        value={Oname}
         onChange={(e) => setName(e.target.value)}
       />
       <br/>
-      <label htmlFor="Fprogram">Faculty:</label>
+      <label htmlFor="Odep">Depertment:</label>
       <input
         type="text"
-        id="Fprogram"
-        value={Fprogram}
-        onChange={(e) => setProgram(e.target.value)}
-      />
-      <br/>
-      <label htmlFor="Fdep">Depertment:</label>
-      <input
-        type="text"
-        id="Fdep"
-        value={Fdep}
+        id="Odep"
+        value={Odep}
         onChange={(e) => setDep(e.target.value)}
       />
       <br/>
-      <label htmlFor="Faddress">address:</label>
+      <label htmlFor="Oaddress">address:</label>
       <input
         type="text"
-        id="Faddress"
-        value={Faddress}
+        id="Oaddress"
+        value={Oaddress}
         onChange={(e) => setAddress(e.target.value)}
       />
       <br/>
-      <label htmlFor="Fnum">Number:</label>
+      <label htmlFor="Onum">Number:</label>
       <input
         type="text"
-        id="Fnum"
-        value={Fnum}
+        id="Onum"
+        value={Onum}
         onChange={(e) => setNum(e.target.value)}
       />
       <br/>
-      <label htmlFor="Fdob">Date of Birth:</label>
+      <label htmlFor="Odob">Date of Birth:</label>
       <input
         type="text"
-        id="Fdob"
-        value={Fdob}
+        id="Odob"
+        value={Odob}
         onChange={(e) => setDob(e.target.value)}
       />
       <br/>
