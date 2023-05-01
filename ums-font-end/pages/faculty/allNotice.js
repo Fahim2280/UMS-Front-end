@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function AllNotice() {
   const [data, setData] = useState(null);
@@ -14,6 +15,19 @@ export default function AllNotice() {
       });
   }, []);
 
+  function handleSubmit(id) {
+    const conf = window.confirm("Are you sure you want to delete?");
+    if (conf == true) {
+      fetch("http://localhost:3000/faculty/deletenotice/" + id, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+        });
+    }
+  }
+
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>Data not Found!!!</p>;
   return (
@@ -22,9 +36,9 @@ export default function AllNotice() {
       <table>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Subject</th>
-            <th>Details</th>
+            <td>Id</td>
+            <td>Subject</td>
+            <td>Details</td>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +47,10 @@ export default function AllNotice() {
               <td>{notice.id}</td>
               <td>{notice.subject}</td>
               <td>{notice.Details}</td>
+              <td>
+                <Link href={`./updatenotice/${notice.id}`}>Update</Link>
+                <button onClick={(e) => handleSubmit(notice.id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
