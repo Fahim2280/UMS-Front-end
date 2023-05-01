@@ -3,7 +3,7 @@ import Link from "next/link";
 import Login from "../login";
 import Register from "../register";
 import AddNotice from "./addnotice";
-import UpdateNotice from "./updatenotice";
+import UpdateNotice from "./[updatenotice]";
 import AllNotice from "./allNotice";
 import DeleteNotice from "./deletenotice";
 import RequestRoom from "./Requstroom";
