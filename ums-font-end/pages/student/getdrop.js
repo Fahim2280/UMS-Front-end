@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export default function getissue() {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     setLoading(true);
@@ -33,10 +34,24 @@ export default function getissue() {
               <td>{student.Did}</td>
               <td>{student.applicationStatus}</td>
               <td>{student.reason}</td>
+              <td>
+                <button onClick={e=> handleSubmit(student.Did)}>Delete</button>
+                </td>
             </tr>
           ))}
         </tbody>
       </table>
     </>
   );
+  function handleSubmit(Did) {
+    const conf=window.confirm("Are you sure you want to delete?");
+    if(conf==true){
+      fetch("http://localhost:3000/drop/deletedrop/"+Did,{
+        method: "DELETE",
+      }).then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+    }
+}
 }

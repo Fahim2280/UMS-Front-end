@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function getissue() {
   const [data, setData] = useState(null);
@@ -32,14 +33,31 @@ export default function getissue() {
           {data.map((student) => (
             <tr key={student.id}>
               <td>{student.Isid}</td>
-              <td>{student.issuetype}</td>
+              <td>{student.issueType}</td>
               <td>{student.issue}</td>
+              <td>
+                {/* <Link href={`./updateIssue/${student.Isid}`}>Update</Link> */}
+
+                <a href="./updateIssue/"><button type="submit">Update</button></a>
+                <button onClick={e=> handleSubmit(student.Isid)}>Delete</button>
+                </td>
             </tr>
           ))}
         </tbody>
       </table>
     </>
   );
+  function handleSubmit(Isid) {
+    const conf=window.confirm("Are you sure you want to delete?");
+    if(conf==true){
+      fetch("http://localhost:3000/issue/deleteIssue/"+Isid,{
+        method: "DELETE",
+      }).then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+    }
+}
 }
 
 

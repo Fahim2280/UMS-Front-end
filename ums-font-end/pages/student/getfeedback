@@ -42,3 +42,9 @@ export default function getfeedback() {
 
 
 
+// if(conf){
+//   axios.delete("http://localhost:3000/drop/deletedrop/"+Did)
+//   .then(res => {
+//     alert('Deleted Successfully');
+  
+//   }).catch(err => console.log(err));
