@@ -4,6 +4,7 @@ import axios from "axios";
 import MyLayout from "@/pages/component/layout";
 import FacultyLayout from "@/pages/component/facultydata";
 import Header from "../../../pages/component/headerAdmin";
+import Footer from "../../../pages/component/footer";
 
 export default function MyPage({ data }) {
   const [inputValue, setInputValue] = useState();
@@ -89,6 +90,7 @@ export default function MyPage({ data }) {
         </button>
         {/* ...............back button end..................... */}
       </div>
+      <Footer />
     </>
   );
 }

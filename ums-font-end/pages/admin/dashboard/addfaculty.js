@@ -3,6 +3,7 @@ import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
 import Header from "../../../pages/component/headerAdmin";
+import Footer from "../../../pages/component/footer";
 
 export default function AddFaculty() {
   const router = useRouter();
@@ -52,6 +53,7 @@ export default function AddFaculty() {
   };
 
   return (
+    <>
     <div>
       <Header />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
@@ -195,5 +197,7 @@ export default function AddFaculty() {
           {/* ...............back button end..................... */}
       </div>
     </div>
+    <Footer />
+    </>
   );
 }

@@ -372,6 +372,7 @@ export default function AdminDashboard() {
           </a>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

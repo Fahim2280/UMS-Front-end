@@ -3,6 +3,7 @@ import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
 import Header from "../../../pages/component/headerAdmin";
+import Footer from "../../../pages/component/footer";
 
 export default function UpdateStudent() {
   const router = useRouter();
@@ -50,6 +51,7 @@ export default function UpdateStudent() {
   };
 
   return (
+    <>
     <form onSubmit={handleUpdateStudent}>
       <Header />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
@@ -214,5 +216,7 @@ export default function UpdateStudent() {
         </button>
       </div>
     </form>
+    <Footer />
+    </>
   );
 }

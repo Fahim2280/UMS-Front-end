@@ -3,6 +3,7 @@ import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
 import Header from "../../../pages/component/headerAdmin";
+import Footer from "../../../pages/component/footer";
 
 export default function UpdateStudent() {
   const router = useRouter();
@@ -241,6 +242,7 @@ export default function UpdateStudent() {
         </button>
         {/* ...............back button end..................... */}
       </form>
+      <Footer />
     </>
   );
 }

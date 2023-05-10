@@ -3,6 +3,7 @@ import MyLayout from "@/pages/component/layout";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Header from "../../../pages/component/headerAdmin";
+import Footer from "../../../pages/component/footer";
 
 export default function GetNotice({ data }) {
   const router = useRouter();
@@ -82,6 +83,7 @@ export default function GetNotice({ data }) {
         </button>
         {/* ...............back button end..................... */}
       </div>
+      <Footer />
     </>
   );
 }

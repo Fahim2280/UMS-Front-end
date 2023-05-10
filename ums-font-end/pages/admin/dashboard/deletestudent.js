@@ -3,6 +3,8 @@ import axios from "axios";
 import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
+import Footer from "../../../pages/component/footer";
+import Header from "../../../pages/component/headerAdmin";
 
 export default function DeleteStudent() {
   const [Sid, setStudentId] = useState("");
@@ -23,6 +25,7 @@ export default function DeleteStudent() {
 
   return (
     <>
+      <Header />
       <div>
         <MyLayout title="Delete student" />
 
@@ -90,6 +93,7 @@ export default function DeleteStudent() {
         </button>
         {/* ...............back button end..................... */}
       </div>
+      <Footer />
     </>
   );
 }

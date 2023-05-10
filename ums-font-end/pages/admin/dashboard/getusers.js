@@ -3,6 +3,7 @@ import MyLayout from "@/pages/component/layout"
 import axios from "axios";
 import { useRouter } from 'next/router'
 import SessionCheck from '../../component/sessioncheck'
+import Footer from "../../../pages/component/footer";
 
 
 export default function GetUsers({ data }) {
@@ -23,6 +24,7 @@ export default function GetUsers({ data }) {
       <button type="button" onClick={() => router.back()}>
       Click here to go back
     </button>
+    <Footer />
     </>
   );
   }
