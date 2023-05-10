@@ -27,7 +27,6 @@ export default function DeleteStudent() {
     <>
       <Header />
       <div>
-        <MyLayout title="Delete student" />
 
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
           <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
@@ -64,7 +63,7 @@ export default function DeleteStudent() {
             </span>
           </button>
           {/* ...............update button end..................... */}
-        </div>
+        
 
         <br />
         <br />
@@ -92,6 +91,7 @@ export default function DeleteStudent() {
           <span class="sr-only">Icon description</span>
         </button>
         {/* ...............back button end..................... */}
+      </div>
       </div>
       <Footer />
     </>
