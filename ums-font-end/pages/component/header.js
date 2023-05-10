@@ -1,14 +1,5 @@
-import { useState } from "react";
-import Link from "next/link";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const navigation = [
-  { name: "Dashboard", href: "/admin/dashboard/" },
-  { name: "x", href: "#" },
-  { name: "x", href: "#" },
-  { name: "x", href: "#" },
-];
+
 
 export default function Header() {
   //const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,7 +20,7 @@ export default function Header() {
           </a>
           <div class="flex items-center lg:order-2">
             <a
-              href="/admin/dashboard/addadmin"
+              href="/signin"
               class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
             >
               Log in
@@ -81,7 +72,7 @@ export default function Header() {
             <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
                 <a
-                  href="/admin/dashboard/addadmin"
+                  href="/"
                   class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
                   aria-current="page"
                 >
