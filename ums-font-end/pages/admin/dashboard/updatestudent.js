@@ -2,6 +2,7 @@ import { useState } from "react";
 import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
+import Header from "../../../pages/component/headerAdmin";
 
 export default function UpdateStudent() {
   const router = useRouter();
@@ -63,8 +64,7 @@ export default function UpdateStudent() {
   return (
     <>
       <form onSubmit={handleUpdateStudent}>
-        <MyLayout title="Add Faculty" />
-
+      <Header />
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
           <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
             Update
