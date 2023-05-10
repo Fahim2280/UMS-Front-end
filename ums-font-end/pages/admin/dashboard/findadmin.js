@@ -4,8 +4,7 @@ import axios from "axios";
 import MyLayout from "@/pages/component/layout";
 import UserLayout from "@/pages/component/userdata";
 import SessionCheck from "../../component/sessioncheck";
-import Header from "../../../pages/component/headerAdmin";
-import Footer from "../../../pages/component/footer";
+import SideBar from "../../../pages/component/sidebar"; import Footer from "../../../pages/component/footer";
 
 export default function MyPage({ data }) {
   const [inputValue, setInputValue] = useState();

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import MyLayout from "@/pages/component/layout";
 import axios from "axios";
-import Header from "../../../pages/component/headerAdmin";
-import { useRouter } from "next/router";
+import SideBar from "../../../pages/component/sidebar"; import { useRouter } from "next/router";
 import Footer from "../../../pages/component/footer";
 
 export default function GetNotice({ data }) {

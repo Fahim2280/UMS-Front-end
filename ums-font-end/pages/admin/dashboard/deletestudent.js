@@ -4,7 +4,7 @@ import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
 import Footer from "../../../pages/component/footer";
-import Header from "../../../pages/component/headerAdmin";
+import SideBar from "../../../pages/component/sidebar"; 
 
 export default function DeleteStudent() {
   const [Sid, setStudentId] = useState("");
@@ -25,7 +25,7 @@ export default function DeleteStudent() {
 
   return (
     <>
-      <Header />
+       <SideBar />
       <div>
 
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
@@ -47,12 +47,14 @@ export default function DeleteStudent() {
               id="Sid"
               value={Sid}
               onChange={(e) => setStudentId(e.target.value)}
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
+              focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+              dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             ></input>
           </div>
           <br />
           <div>{status}</div>
-          {/* ...............update button..................... */}
+          {/* ...............delete button..................... */}
           <br />
           <button
             onClick={handleDelete}
@@ -62,7 +64,7 @@ export default function DeleteStudent() {
               Delete
             </span>
           </button>
-          {/* ...............update button end..................... */}
+          {/* ...............delete button end..................... */}
         
 
         <br />

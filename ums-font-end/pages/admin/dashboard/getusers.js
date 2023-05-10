@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from 'next/router'
 import SessionCheck from '../../component/sessioncheck'
 import Footer from "../../../pages/component/footer";
+import SideBar from "../../../pages/component/sidebar"; 
 
 
 export default function GetUsers({ data }) {

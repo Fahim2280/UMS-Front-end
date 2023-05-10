@@ -34,6 +34,7 @@ export default function SideBar() {
       >
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul class="space-y-2 font-medium">
+            <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">ADMIN</h1>
             {/* --------------------------------------------------------------- */}
             <li>
               <a
