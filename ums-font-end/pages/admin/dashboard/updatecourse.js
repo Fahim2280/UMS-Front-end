@@ -3,7 +3,7 @@ import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
 import Footer from "../../../pages/component/footer";
-import Header from "../../../pages/component/header";
+import Header from "../../../pages/component/headerAdmin";
 
 export default function UpdateStudent() {
   const router = useRouter();
