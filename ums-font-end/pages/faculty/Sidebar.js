@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import Login from "../signin";
+import Login from "../admin/signin";
 import Register from "../register";
 import AddNotice from "./addnotice";
 import UpdateNotice from "./updatenotice";

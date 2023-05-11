@@ -1,12 +1,14 @@
 import { useState } from "react";
-import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
-import SessionCheck from "../../component/sessioncheck";
-import SideBar from "../../../pages/component/sidebar";
-import Footer from "../../../pages/component/footer";
+import axios from "axios";
+import StudentLayout from "@/pages/component/studentdata";
+import SideBar from "../../component/sidebar";
+import Footer from "../../component/footer";
 
-export default function UpdateStudent() {
+export default function MyPage({ data }) {
+  const [inputValue, setInputValue] = useState();
   const router = useRouter();
+
   const [Sid, setId] = useState("");
   const [Sidd, setIdd] = useState("");
   const [Sname, setName] = useState("");
@@ -62,10 +64,61 @@ export default function UpdateStudent() {
     }
   };
 
+  // -----------------------------------------
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // redirect to the same page with query params containing the input value
+    router.push({
+      pathname: "updatestudent",
+      query: { inputValue: inputValue },
+    });
+  };
+
   return (
     <>
+      <SideBar />
+      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
+        <form onSubmit={handleFormSubmit}>
+          {/* heading */}
+          <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
+            Search
+            <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">
+              Student
+            </mark>
+          </h1>
+          {/* heading end */}
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Name:
+            </label>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          {/* ...............submit button..................... */}
+          <br />
+          <button
+            type="submit"
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+          >
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Search
+            </span>
+          </button>
+          {/* ...............submit button end..................... */}
+        </form>
+        {data.status == null ? <StudentLayout data={data} /> : data.status}
+      </div>
+
       <form onSubmit={handleUpdateStudent}>
-        <SideBar />
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
           <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
             Update
@@ -241,7 +294,30 @@ export default function UpdateStudent() {
         </button>
         {/* ...............back button end..................... */}
       </form>
+
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  const inputValue = query.inputValue;
+  try {
+    const response = await axios.get(
+      "http://localhost:3000/admin/findStudentname/" + inputValue
+    );
+    const data = await response.data;
+
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: { status: "Enter valid Student Name" },
+      },
+    };
+  }
 }

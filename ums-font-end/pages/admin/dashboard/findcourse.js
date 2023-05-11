@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import FacultyLayout from "@/pages/component/facultydata";
-import SideBar from "../../../pages/component/sidebar"; 
+import CourseLayout from "@/pages/component/coursedata";
+import SideBar from "../../../pages/component/sidebar";
 import Footer from "../../../pages/component/footer";
 
 export default function MyPage({ data }) {
   const [inputValue, setInputValue] = useState();
-  const [Fid, setfacultyId] = useState('');
-  const [status, setStatus] = useState('');
+  const [Cid, setcourseId] = useState("");
+  const [status, setStatus] = useState("");
   const router = useRouter();
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete('http://localhost:3000/admin/deleteFaculty/', { data: { Fid: Fid } });
-      setStatus(`Faculty with ID ${Fid} has been deleted.`);
+      const response = await axios.delete(
+        "http://localhost:3000/admin/deleteCourse/",
+        { data: { Cid: Cid } }
+      );
+      setStatus(`Course with ID ${Cid} has been deleted.`);
     } catch (error) {
-      setStatus(`Error deleting Faculty: ${error.message}`);
+      setStatus(`Error deleting Course: ${error.message}`);
     }
   };
 
@@ -28,13 +31,14 @@ export default function MyPage({ data }) {
     e.preventDefault();
     // redirect to the same page with query params containing the input value
     router.push({
-      pathname: "findfaculty",
+      pathname: "findcourse",
       query: { inputValue: inputValue },
     });
   };
 
   return (
     <>
+      {/* <SessionCheck /> */}
       <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         <form onSubmit={handleFormSubmit}>
@@ -42,16 +46,16 @@ export default function MyPage({ data }) {
           <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
             Search
             <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">
-              Faculty
+              Course
             </mark>
           </h1>
           {/* heading end */}
           <div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              DEP:
+              ID:
             </label>
             <input
-              type="text"
+              type="number"
               value={inputValue}
               onChange={handleInputChange}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -70,34 +74,39 @@ export default function MyPage({ data }) {
           </button>
           {/* ...............submit button end..................... */}
         </form>
-        <br />
 
-        {data.status == null ? <FacultyLayout data={data} /> : data.status}
+        {/* ...............error msg..................... */}
+        {data.status == null ? (
+          <CourseLayout data={data} />
+        ) : (
+          <p style={{ color: "red" }}>{data.status}</p>
+        )}
 
-        <br />
+        {/* ...............error msg end..................... */}
       </div>
+
       <div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
           <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
             Delete
             <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">
-              Facilty
+              Course
             </mark>
           </h1>
           <label
-            htmlFor="faculty-id"
+            htmlFor="course-id"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Faculty ID:
+            Course ID:
           </label>
           <input
             type="text"
-            id="faculty-id"
-            value={Fid}
-            onChange={(e) => setfacultyId(e.target.value)}
+            id="course-id"
+            value={Cid}
+            onChange={(e) => setcourseId(e.target.value)}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
-              focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-              dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+        dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           {/* ...............delete button..................... */}
           <br />
@@ -146,7 +155,7 @@ export async function getServerSideProps({ query }) {
   const inputValue = query.inputValue;
   try {
     const response = await axios.get(
-      "http://localhost:3000/admin/findFacultydep/" + inputValue
+      "http://localhost:3000/admin/findCourse/" + inputValue
     );
     const data = await response.data;
 
@@ -158,7 +167,7 @@ export async function getServerSideProps({ query }) {
   } catch (error) {
     return {
       props: {
-        data: { status: "Enter valid Faculty Dep" },
+        data: { status: "Enter valid Admin ID" },
       },
     };
   }

@@ -1,11 +1,14 @@
 import { useState } from "react";
-import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
-import SessionCheck from "../../component/sessioncheck";
-import SideBar from "../../../pages/component/sidebar"; import Footer from "../../../pages/component/footer";
+import axios from "axios";
+import FacultyLayout from "@/pages/component/facultydata";
+import SideBar from "../../../pages/component/sidebar";
+import Footer from "../../../pages/component/footer";
 
-export default function UpdateStudent() {
+export default function MyPage({ data }) {
+  const [inputValue, setInputValue] = useState();
   const router = useRouter();
+
   const [Fid, setId] = useState("");
   const [Fidd, setIdd] = useState("");
   const [Fname, setName] = useState("");
@@ -60,10 +63,62 @@ export default function UpdateStudent() {
     }
   };
 
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // redirect to the same page with query params containing the input value
+    router.push({
+      pathname: "updatefaculty",
+      query: { inputValue: inputValue },
+    });
+  };
+
   return (
     <>
-      <form onSubmit={handleUpdateStudent}>
       <SideBar />
+      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-0">
+        <form onSubmit={handleFormSubmit}>
+          {/* heading */}
+          <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
+            Search
+            <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">
+              Faculty
+            </mark>
+          </h1>
+          {/* heading end */}
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              DEP:
+            </label>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+
+          {/* ...............submit button..................... */}
+          <br />
+          <button
+            type="submit"
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+          >
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Search
+            </span>
+          </button>
+          {/* ...............submit button end..................... */}
+        </form>
+        <br />
+
+        {data.status == null ? <FacultyLayout data={data} /> : data.status}
+      </div>
+
+      <form onSubmit={handleUpdateStudent}>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
           {/* heading */}
           <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
@@ -74,7 +129,12 @@ export default function UpdateStudent() {
           </h1>
           {/* heading end */}
 
-          <label htmlFor="Fid" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID:</label>
+          <label
+            htmlFor="Fid"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            ID:
+          </label>
           <input
             type="number"
             id="Fid"
@@ -85,7 +145,12 @@ export default function UpdateStudent() {
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br />
-          <label htmlFor="Fidd" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Faculty ID:</label>
+          <label
+            htmlFor="Fidd"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Faculty ID:
+          </label>
           <input
             type="number"
             id="Fidd"
@@ -97,7 +162,12 @@ export default function UpdateStudent() {
           />
           <br />
 
-          <label htmlFor="Fname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name:</label>
+          <label
+            htmlFor="Fname"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Name:
+          </label>
           <input
             type="text"
             id="Fname"
@@ -108,7 +178,12 @@ export default function UpdateStudent() {
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br />
-          <label htmlFor="Fprogram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Faculty:</label>
+          <label
+            htmlFor="Fprogram"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Faculty:
+          </label>
           <input
             type="text"
             id="Fprogram"
@@ -119,7 +194,12 @@ export default function UpdateStudent() {
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br />
-          <label htmlFor="Fdep" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Depertment:</label>
+          <label
+            htmlFor="Fdep"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Depertment:
+          </label>
           <input
             type="text"
             id="Fdep"
@@ -130,7 +210,12 @@ export default function UpdateStudent() {
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br />
-          <label htmlFor="Faddress" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">address:</label>
+          <label
+            htmlFor="Faddress"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            address:
+          </label>
           <input
             type="text"
             id="Faddress"
@@ -141,7 +226,12 @@ export default function UpdateStudent() {
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br />
-          <label htmlFor="Fnum" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number:</label>
+          <label
+            htmlFor="Fnum"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Number:
+          </label>
           <input
             type="text"
             id="Fnum"
@@ -152,7 +242,12 @@ export default function UpdateStudent() {
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
           <br />
-          <label htmlFor="Fdob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth:</label>
+          <label
+            htmlFor="Fdob"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Date of Birth:
+          </label>
           <input
             type="text"
             id="Fdob"
@@ -201,7 +296,30 @@ export default function UpdateStudent() {
           </button>
         </div>
       </form>
+
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  const inputValue = query.inputValue;
+  try {
+    const response = await axios.get(
+      "http://localhost:3000/admin/findFacultydep/" + inputValue
+    );
+    const data = await response.data;
+
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: { status: "Enter valid Faculty Dep" },
+      },
+    };
+  }
 }

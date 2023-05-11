@@ -1,6 +1,4 @@
-import Image from "next/image";
-
-export default function OfficerLayout({ data }) {
+export default function CourseLayout({ data }) {
   return (
     <>
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -10,34 +8,26 @@ export default function OfficerLayout({ data }) {
               ID:
             </th>
             <th scope="col" class="px-6 py-3">
-              Officer id
-            </th>
-            <th scope="col" class="px-6 py-3">
               Name
             </th>
             <th scope="col" class="px-6 py-3">
-              Department
+              Credit
             </th>
             <th scope="col" class="px-6 py-3">
-              Number
+              Room
             </th>
             <th scope="col" class="px-6 py-3">
-              Address
-            </th>
-            <th scope="col" class="px-6 py-3">
-              DOB
+              Time
             </th>
           </tr>
         </thead>
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="px-6 py-4">{data.Oid}</td>
-            <td class="px-6 py-4">{data.Oidd}</td>
-            <td class="px-6 py-4">{data.Oname}</td>
-            <td class="px-6 py-4">{data.Odep}</td>
-            <td class="px-6 py-4">{data.Onum}</td>
-            <td class="px-6 py-4">{data.Oaddress}</td>
-            <td class="px-6 py-4">{data.Odob}</td>
+            <td class="px-6 py-4">{data.Cid}</td>
+            <td class="px-6 py-4">{data.Cname}</td>
+            <td class="px-6 py-4"> {data.credit}</td>
+            <td class="px-6 py-4">{data.room}</td>
+            <td class="px-6 py-4">{data.time}</td>
           </tr>
         </tbody>
       </table>
