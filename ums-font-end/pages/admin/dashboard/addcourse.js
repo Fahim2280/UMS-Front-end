@@ -2,7 +2,6 @@ import { useState } from "react";
 import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
-import Header from "../../../pages/component/headerAdmin";
 import Footer from "../../../pages/component/footer";
 import SideBar from "../../../pages/component/sidebar";
 

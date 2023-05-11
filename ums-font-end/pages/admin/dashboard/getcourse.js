@@ -8,7 +8,7 @@ export default function GetNotice({ data }) {
   const router = useRouter();
   return (
     <>
-      <Header />
+      <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         {/* heading */}
         <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
