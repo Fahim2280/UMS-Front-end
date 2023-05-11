@@ -1,12 +1,9 @@
+import Image from "next/image";
 
-import Image from 'next/image'
-
-export default function OfficerLayout({data})   
-{
-    return(
-        <>
-
-<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+export default function OfficerLayout({ data }) {
+  return (
+    <>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">
@@ -34,7 +31,7 @@ export default function OfficerLayout({data})
         </thead>
         <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-          <td class="px-6 py-4">{data.Oid}</td>
+            <td class="px-6 py-4">{data.Oid}</td>
             <td class="px-6 py-4">{data.Oidd}</td>
             <td class="px-6 py-4">{data.Oname}</td>
             <td class="px-6 py-4">{data.Odep}</td>
@@ -44,6 +41,6 @@ export default function OfficerLayout({data})
           </tr>
         </tbody>
       </table>
-        </>
-    )
+    </>
+  );
 }
