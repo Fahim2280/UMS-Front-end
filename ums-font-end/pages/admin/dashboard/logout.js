@@ -13,7 +13,7 @@ const Logout = () => {
         });
 
         if (response.ok) {
-          router.push("/signin"); // redirect to login page
+          router.push("/admin/signin"); // redirect to login page
         } else {
           console.error("Failed to log out");
         }

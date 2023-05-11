@@ -196,8 +196,8 @@ export default function AddAdmin() {
           <span class="sr-only">Icon description</span>
         </button>
         {/* ...............back button end..................... */}
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 }
