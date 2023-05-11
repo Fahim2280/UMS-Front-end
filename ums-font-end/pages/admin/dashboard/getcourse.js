@@ -1,14 +1,15 @@
 import Link from "next/link";
-import MyLayout from "@/pages/component/layout";
 import axios from "axios";
 import { useRouter } from "next/router";
 import SideBar from "../../../pages/component/sidebar"; 
 import Footer from "../../../pages/component/footer";
+import SessionCheck from "../../component/sessioncheck";
 
 export default function GetNotice({ data }) {
   const router = useRouter();
   return (
     <>
+    <SessionCheck />
       <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         {/* heading */}

@@ -4,6 +4,7 @@ import axios from "axios";
 import StudentLayout from "@/pages/component/studentdata";
 import SideBar from "../../component/sidebar";
 import Footer from "../../component/footer";
+import SessionCheck from "../../component/sessioncheck";
 
 export default function MyPage({ data }) {
   const [inputValue, setInputValue] = useState();
@@ -38,6 +39,7 @@ export default function MyPage({ data }) {
 
   return (
     <>
+    <SessionCheck />
       <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         <form onSubmit={handleFormSubmit}>

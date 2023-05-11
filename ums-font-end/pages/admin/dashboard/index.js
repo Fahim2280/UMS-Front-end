@@ -1,12 +1,13 @@
-import MyLayout from "@/pages/component/layout";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import Footer from "../../../pages/component/footer";
-import Header from "../../../pages/component/headerAdmin";
 import SideBar from "../../../pages/component/sidebar";
+import SessionCheck from "../../component/sessioncheck";
 
 export default function AdminDashboard() {
+  const router = useRouter();
   return (
     <>
+      <SessionCheck />
       <SideBar />
       <div class="p-4 sm:ml-64">
         <div className="bg-white">
