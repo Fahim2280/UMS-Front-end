@@ -20,14 +20,6 @@ export default function GetNotice({ data }) {
           </mark>
         </h1>
         {/* heading end */}
-        {/* <ul>
-        {data.map(item => (
-          <li key={item.Nid}>
-      
-        <Link href={"/admin/dashboard/users/"+item.Nid}>{item.Nsub}</Link>
-            </li>
-        ))}
-      </ul> */}
 
         <div class="relative overflow-x-auto">
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

@@ -2,7 +2,8 @@ import Link from "next/link";
 import MyLayout from "@/pages/component/layout";
 import axios from "axios";
 import { useRouter } from "next/router";
-import SideBar from "../../../pages/component/sidebar"; import Footer from "../../../pages/component/footer";
+import SideBar from "../../../pages/component/sidebar"; 
+import Footer from "../../../pages/component/footer";
 
 export default function GetNotice({ data }) {
   const router = useRouter();
