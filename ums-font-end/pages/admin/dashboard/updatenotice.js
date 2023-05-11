@@ -4,6 +4,7 @@ import axios from "axios";
 import SideBar from "../../../pages/component/sidebar";
 import { useRouter } from "next/router";
 import Footer from "../../../pages/component/footer";
+import SessionCheck from "../../component/sessioncheck";
 
 export default function GetNotice({ data }) {
   const router = useRouter();
@@ -46,7 +47,7 @@ export default function GetNotice({ data }) {
 
   return (
     <>
-      {/* <SessionCheck /> */}
+      <SessionCheck />
       <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         {/* heading */}

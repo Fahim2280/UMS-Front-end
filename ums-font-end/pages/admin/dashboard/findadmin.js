@@ -25,7 +25,8 @@ export default function MyPage({ data }) {
 
   return (
     <>
-      {/* <SessionCheck /> */}
+
+      <SessionCheck />
       <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         <form onSubmit={handleFormSubmit}>
