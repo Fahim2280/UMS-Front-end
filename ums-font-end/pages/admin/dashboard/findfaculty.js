@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import MyLayout from "@/pages/component/layout";
 import FacultyLayout from "@/pages/component/facultydata";
 import SideBar from "../../../pages/component/sidebar"; 
 import Footer from "../../../pages/component/footer";
