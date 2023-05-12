@@ -47,13 +47,10 @@ export default function AddAdmin() {
           },
         }
       );
-
-      setSuccess("Admin add successfully");
+      setSuccess("Signup successfully");
       reset();
     } catch (error) {
-      //console.log(error.response.data.message);
-
-      setSuccess("Admin add successfully -err  ");
+      setSuccess("Signup not successfull  ");
     }
   };
 
@@ -85,7 +82,7 @@ export default function AddAdmin() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            {errors.name && <p>Name is required</p>}
+            {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
           </div>
           <div>
             <label htmlFor="email">Email</label>
@@ -101,7 +98,7 @@ export default function AddAdmin() {
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
             {errors.email && (
-              <p>
+              <p className="text-red-500 text-sm">
                 {errors.email.type === "required"
                   ? "Email is required"
                   : "Invalid email address"}
@@ -115,16 +112,16 @@ export default function AddAdmin() {
               id="pass"
               {...register("pass", {
                 required: true,
-                pattern: /^\d+$/,
-                minLength: 5,
+                //pattern: /^\d+$/,
+                //minLength: 5,
               })}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            {errors.password && (
-              <p>
-                {errors.password.type === "required"
+            {errors.pass && (
+              <p className="text-red-500 text-sm">
+                {errors.pass.type === "required"
                   ? "password is required"
                   : "Invalid password"}
               </p>
@@ -139,7 +136,7 @@ export default function AddAdmin() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            {errors.address && <p>address is required</p>}
+            {errors.address && <p className="text-red-500 text-sm">address is required</p>}
           </div>
           <br />
           <div>
@@ -153,7 +150,7 @@ export default function AddAdmin() {
               })}
             />
             {errors.myfile && (
-              <p>
+              <p className="text-red-500 text-sm">
                 {errors.myfile.type === "required"
                   ? "file is required"
                   : "invalid file"}
