@@ -16,8 +16,43 @@ export default function AddOfficer() {
     Odob: "",
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let errors = {};
+
+    if (!formData.Oidd) {
+      errors.Oidd = "id is required";
+    }
+
+    if (!formData.Oname) {
+      errors.Oname = "name is required";
+    }
+
+    if (!formData.Odep) {
+      errors.Odep = "depertment is required";
+    }
+    if (!formData.Oaddress) {
+      errors.Oaddress = "address is required";
+    }
+    if (!formData.Onum) {
+      errors.Onum = "number is required";
+    }
+    if (!formData.Odob) {
+      errors.Odob = "date of birth is required";
+    }
+
+    return errors;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
 
     const response = await fetch("http://localhost:3000/admin/insertofficer/", {
       method: "POST",
@@ -40,6 +75,7 @@ export default function AddOfficer() {
       Onum: "",
       Odob: "",
     });
+    setErrors({});
   };
 
   const handleChange = (event) => {
@@ -51,7 +87,8 @@ export default function AddOfficer() {
   };
 
   return (
-    <><SessionCheck />
+    <>
+      <SessionCheck />
       <div>
         <SideBar />
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
@@ -75,6 +112,9 @@ export default function AddOfficer() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Oidd && (
+                <div class="text-red-500 text-sm">{errors.Oidd}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -88,6 +128,9 @@ export default function AddOfficer() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Oname && (
+                <div class="text-red-500 text-sm">{errors.Oname}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -101,6 +144,9 @@ export default function AddOfficer() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Odep && (
+                <div class="text-red-500 text-sm">{errors.Odep}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -114,6 +160,9 @@ export default function AddOfficer() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Oaddress && (
+                <div class="text-red-500 text-sm">{errors.Oaddress}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -127,6 +176,9 @@ export default function AddOfficer() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Onum && (
+                <div class="text-red-500 text-sm">{errors.Onum}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -140,6 +192,9 @@ export default function AddOfficer() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Odob && (
+                <div class="text-red-500 text-sm">{errors.Odob}</div>
+              )}
             </label>
             <br />
 
