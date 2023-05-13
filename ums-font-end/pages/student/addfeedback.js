@@ -3,7 +3,7 @@ import axios from "axios"
 import { useState } from "react"
 
 
-export default function dropapp() {
+export default function addfeedback() {
     const {
         register,
         handleSubmit,
@@ -14,12 +14,11 @@ export default function dropapp() {
     const onSubmit = async (data) => {
         console.log(data);
         const formData = new FormData();
-        formData.append('applicationStatus', data.applicationStatus);
-        formData.append('reason', data.reason);
+        formData.append('feedback', data.feedback);
 
         console.log(formData);
         try {
-            const response = await axios.post("http://localhost:3000/drop/insertdrop",
+            const response = await axios.post("http://localhost:3000/facfeedback/insertfeedback",
                 JSON.stringify(data), {
                 headers: {
                     "Content-Type": "application/json"
@@ -27,7 +26,7 @@ export default function dropapp() {
             });
 
 
-            setSuccess('drop application successfull');
+            setSuccess('feedback successfull');
             reset();
 
         }
@@ -43,19 +42,17 @@ export default function dropapp() {
     return (
         <>
           
-            <h1>add drop application</h1>
+            <h1>add feedback</h1>
             {success}
             <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
               
+           
                 <div>
-                  application Status will be pending
-                </div>
-                <div>
-                    <label htmlFor="reason">reason</label>
+                    <label htmlFor="feedback">feedback</label>
                     <input
-                        type="reason"
-                        id="reason"
-                        {...register('reason', { required: true })}
+                        type="feedback"
+                        id="feedback"
+                        {...register('feedback')}
                     />
                 </div>
                

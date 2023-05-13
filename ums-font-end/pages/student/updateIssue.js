@@ -61,87 +61,151 @@
 // }
 // export default update;
 
-import { useState } from "react";
-import { useRouter } from 'next/router'
+// import { useState } from "react";
+// import { useRouter } from 'next/router'
 
-export default function updateIssue() {
+// export default function updateIssue() {
+//   const router = useRouter();
+//   const [Isid, setId] = useState("");
+//   const [issueType, setIssueType] = useState("");
+//   const [issue, setIssue] = useState("");
+
+//   const [successMessage, setSuccessMessage] = useState("");
+//   const [errorMessage, setErrorMessage] = useState("");
+
+//   const handleUpdateIssue = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const res = await fetch(`http://localhost:3000/issue/updateissue/`, {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ Isid, issueType, issue}),
+//       });
+
+//       const data = await res.json();
+
+//       if (data.success) {
+//         setErrorMessage("");
+//         setId("");
+//         setIssueType("");
+//         setIssue("");
+
+//       } else {
+//         setSuccessMessage("issuedata updated successfully.");
+//         setErrorMessage(data.message);
+//       }
+//     } catch (err) {
+//       console.error(err);
+//       setErrorMessage("Something went wrong.");
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleUpdateIssue}>
+
+//       <h1>Update Course Data</h1>
+
+//       <label htmlFor="Isid">Issue ID:</label>
+//       <input
+//         type="number"
+//         id="Isid"
+//         value={Isid}
+//         onChange={(e) => setId(e.target.value)}
+//       />
+//       <br/>
+//       <label htmlFor="issueType">Issue Type:</label>
+//       <input
+//         type="text"
+//         id="issueType"
+//         value={issueType}
+//         onChange={(e) => setIssueType(e.target.value)}
+//       />
+//       <br/>
+//       <label htmlFor="issue">issue:</label>
+//       <input
+//         type="text"
+//         id="issue"
+//         value={issue}
+//         onChange={(e) => setIssue(e.target.value)}
+//       />
+//       <br/>
+    
+//       <button type="submit">Update</button>
+//       {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+//       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+//       <br/>
+//       <br/>
+//       <br/>
+//       <button type="button" onClick={() => router.back()}>GO BACK</button>
+//     </form>
+//     
+//   );
+// }
+
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import axios from 'axios';
+
+const UpdateIssue = () => {
   const router = useRouter();
-  const [Isid, setId] = useState("");
-  const [issueType, setIssueType] = useState("");
-  const [issue, setIssue] = useState("");
+  const [Isid, setIsid] = useState(router.query.Isid || '');
+  const [issueType, setIssueType] = useState(router.query.issueType || '');
+  const [issue, setIssue] = useState(router.query.issue || '');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleUpdateIssue = async (e) => {
-    e.preventDefault();
+    // Validate form data here
 
     try {
-      const res = await fetch(`http://localhost:3000/issue/updateissue/`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ Isid, issueType, issue}),
+      const response = await axios.put('http://localhost:3000/issue/updateissue', {
+        Isid,
+        issueType,
+        issue,
       });
-
-      const data = await res.json();
-
-      if (data.success) {
-        setErrorMessage("");
-        setId("");
-        setIssueType("");
-        setIssue("");
-
-      } else {
-        setSuccessMessage("issuedata updated successfully.");
-        setErrorMessage(data.message);
+      setSuccess('update successful'); // set success message
+      setError(null); // clear error message
+      router.push('http://localhost:7000/student/getissue'); // redirect to getissue page
+    } catch (error) {
+      if (error.response) {
+        setError(error.response.data.message); // set error message
       }
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("Something went wrong.");
     }
   };
 
   return (
-    <form onSubmit={handleUpdateIssue}>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="issueType">Issue Type:</label>
+        <input
+          type="text"
+          name="issueType"
+          id="issueType"
+          value={issueType}
+          onChange={(event) => setIssueType(event.target.value)}
+        />
 
-      <h1>Update Course Data</h1>
+      </div>
+      <div>
+        <label htmlFor="issue">Issue:</label>
+        <textarea
+          name="issue"
+          id="issue"
+          value={issue}
+          onChange={(event) => setIssue(event.target.value)}
+        />
+       {error && <p className="error">{error}</p>}
+      {success && <p className="success">{success}</p>}
 
-      <label htmlFor="Isid">Issue ID:</label>
-      <input
-        type="number"
-        id="Isid"
-        value={Isid}
-        onChange={(e) => setId(e.target.value)}
-      />
-      <br/>
-      <label htmlFor="issueType">Issue Type:</label>
-      <input
-        type="text"
-        id="issueType"
-        value={issueType}
-        onChange={(e) => setIssueType(e.target.value)}
-      />
-      <br/>
-      <label htmlFor="issue">issue:</label>
-      <input
-        type="text"
-        id="issue"
-        value={issue}
-        onChange={(e) => setIssue(e.target.value)}
-      />
-      <br/>
-    
+      </div>
       <button type="submit">Update</button>
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      <br/>
-      <br/>
-      <br/>
-      <button type="button" onClick={() => router.back()}>GO BACK</button>
     </form>
-    
-  );
-}
+  );
+};
 
+export default UpdateIssue;

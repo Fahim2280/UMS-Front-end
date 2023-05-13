@@ -7,7 +7,7 @@ export default function getissue() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/issue/getissue/13")
+    fetch("http://localhost:3000/issue/getissue/9")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
