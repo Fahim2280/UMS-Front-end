@@ -55,13 +55,13 @@ export default function MyPage({ data }) {
         setNum("");
         setDob("");
       } else {
-        setSuccessMessage("Student data updated successfully.");
+        setErrorMessage("Something went wrong.");
         setErrorMessage(data.message);
       }
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("Something went wrong.");
-      setSuccessMessage("");
+    } catch (error) {
+      console.error(error);
+      setSuccessMessage("Student data updated successfully.");
+
     }
   };
 
@@ -82,7 +82,7 @@ export default function MyPage({ data }) {
 
   return (
     <>
-    <SessionCheck />
+      <SessionCheck />
       <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         <form onSubmit={handleFormSubmit}>
@@ -117,7 +117,11 @@ export default function MyPage({ data }) {
           </button>
           {/* ...............submit button end..................... */}
         </form>
-        {data.status == null ? <StudentLayout data={data} /> : data.status}
+        {data.status == null ? (
+          <StudentLayout data={data} />
+        ) : (
+          <p class="text-red-500 text-sm">{data.status}</p>
+        )}
       </div>
 
       <form onSubmit={handleUpdateStudent}>

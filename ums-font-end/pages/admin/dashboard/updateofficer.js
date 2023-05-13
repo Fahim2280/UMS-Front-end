@@ -44,12 +44,13 @@ export default function MyPage({ data }) {
         setNum("");
         setDob("");
       } else {
-        setSuccessMessage("Officer data updated successfully.");
+        setErrorMessage("Something went wrong.");
         setErrorMessage(data.message);
       }
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("Something went wrong.");
+    } catch (error) {
+      console.error(error);
+      setSuccessMessage("Officer data updated successfully.");
+      setSuccessMessage("");
     }
   };
 
@@ -88,6 +89,7 @@ export default function MyPage({ data }) {
               type="text"
               value={inputValue}
               onChange={handleInputChange}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -101,11 +103,13 @@ export default function MyPage({ data }) {
               Search
             </span>
           </button>
-
           {/* ...............submit button end..................... */}
         </form>
-        <br />
-        {data.status == null ? <OfficerLayout data={data} /> : data.status}
+        {data.status == null ? (
+          <OfficerLayout data={data} />
+        ) : (
+          <p class="text-red-500 text-sm">{data.status}</p>
+        )}
       </div>
 
       <form onSubmit={handleUpdateStudent}>
@@ -130,6 +134,7 @@ export default function MyPage({ data }) {
             id="Oid"
             value={Oid}
             onChange={(e) => setId(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -146,6 +151,7 @@ export default function MyPage({ data }) {
             id="Oidd"
             value={Oidd}
             onChange={(e) => setIdd(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -163,6 +169,7 @@ export default function MyPage({ data }) {
             id="Oname"
             value={Oname}
             onChange={(e) => setName(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -179,6 +186,7 @@ export default function MyPage({ data }) {
             id="Odep"
             value={Odep}
             onChange={(e) => setDep(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -195,6 +203,7 @@ export default function MyPage({ data }) {
             id="Oaddress"
             value={Oaddress}
             onChange={(e) => setAddress(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -211,6 +220,7 @@ export default function MyPage({ data }) {
             id="Onum"
             value={Onum}
             onChange={(e) => setNum(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -227,6 +237,7 @@ export default function MyPage({ data }) {
             id="Odob"
             value={Odob}
             onChange={(e) => setDob(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

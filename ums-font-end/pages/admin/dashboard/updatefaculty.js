@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import FacultyLayout from "@/pages/component/facultydata";
-import SideBar from "../../../pages/component/sidebar";
-import Footer from "../../../pages/component/footer";
+import SideBar from "../../component/sidebar";
+import Footer from "../../component/footer";
 import SessionCheck from "../../component/sessioncheck";
 
 export default function MyPage({ data }) {
@@ -55,12 +55,13 @@ export default function MyPage({ data }) {
         setNum("");
         setDob("");
       } else {
-        setSuccessMessage("Faculty data updated successfully.");
+        setErrorMessage("Something went wrong.");
         setErrorMessage(data.message);
       }
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("Something went wrong.");
+    } catch (error) {
+      console.error(error);
+      setSuccessMessage("Student data updated successfully.");
+      setSuccessMessage("");
     }
   };
 
@@ -79,7 +80,7 @@ export default function MyPage({ data }) {
 
   return (
     <>
-    <SessionCheck />
+      <SessionCheck />
       <SideBar />
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-0">
         <form onSubmit={handleFormSubmit}>
@@ -99,6 +100,7 @@ export default function MyPage({ data }) {
               type="text"
               value={inputValue}
               onChange={handleInputChange}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -115,9 +117,11 @@ export default function MyPage({ data }) {
           </button>
           {/* ...............submit button end..................... */}
         </form>
-        <br />
-
-        {data.status == null ? <FacultyLayout data={data} /> : data.status}
+        {data.status == null ? (
+          <FacultyLayout data={data} />
+        ) : (
+          <p class="text-red-500 text-sm">{data.status}</p>
+        )}
       </div>
 
       <form onSubmit={handleUpdateStudent}>
@@ -142,6 +146,7 @@ export default function MyPage({ data }) {
             id="Fid"
             value={Fid}
             onChange={(e) => setId(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -158,6 +163,7 @@ export default function MyPage({ data }) {
             id="Fidd"
             value={Fidd}
             onChange={(e) => setIdd(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
         focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -175,6 +181,7 @@ export default function MyPage({ data }) {
             id="Fname"
             value={Fname}
             onChange={(e) => setName(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -191,6 +198,7 @@ export default function MyPage({ data }) {
             id="Fprogram"
             value={Fprogram}
             onChange={(e) => setProgram(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -207,6 +215,7 @@ export default function MyPage({ data }) {
             id="Fdep"
             value={Fdep}
             onChange={(e) => setDep(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -223,6 +232,7 @@ export default function MyPage({ data }) {
             id="Faddress"
             value={Faddress}
             onChange={(e) => setAddress(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -239,6 +249,7 @@ export default function MyPage({ data }) {
             id="Fnum"
             value={Fnum}
             onChange={(e) => setNum(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -255,10 +266,11 @@ export default function MyPage({ data }) {
             id="Fdob"
             value={Fdob}
             onChange={(e) => setDob(e.target.value)}
+            required={true}
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          ></input>
           <br />
           {/* ...............submit button..................... */}
           <button
@@ -270,8 +282,7 @@ export default function MyPage({ data }) {
             </span>
           </button>
           {/* ...............submit button end..................... */}
-          {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
           <br />
           <br />
           <button
@@ -279,7 +290,6 @@ export default function MyPage({ data }) {
             onClick={() => router.back()}
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            {" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="100%"

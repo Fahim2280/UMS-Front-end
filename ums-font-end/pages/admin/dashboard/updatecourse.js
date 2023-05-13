@@ -41,12 +41,12 @@ export default function MyPage({ data }) {
         setAddress("");
         setNum("");
       } else {
-        setSuccessMessage("Course data updated successfully.");
+        setErrorMessage("Something went wrong.");
         setErrorMessage(data.message);
       }
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("Something went wrong.");
+    } catch (error) {
+      console.error(error);
+      setSuccessMessage("Course data updated successfully.");
     }
   };
 
@@ -85,6 +85,7 @@ export default function MyPage({ data }) {
               type="number"
               value={inputValue}
               onChange={handleInputChange}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -101,8 +102,6 @@ export default function MyPage({ data }) {
           </button>
           {/* ...............submit button end..................... */}
         </form>
-
-        {/* ...............error msg..................... */}
         {data.status == null ? (
           <CourseLayout data={data} />
         ) : (
@@ -133,6 +132,7 @@ export default function MyPage({ data }) {
               id="Cid"
               value={Cid}
               onChange={(e) => setId(e.target.value)}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             ></input>
           </div>
@@ -149,6 +149,7 @@ export default function MyPage({ data }) {
               id="Cname"
               value={Cname}
               onChange={(e) => setName(e.target.value)}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             ></input>
           </div>
@@ -165,6 +166,7 @@ export default function MyPage({ data }) {
               id="credit"
               value={credit}
               onChange={(e) => setDep(e.target.value)}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             ></input>
           </div>
@@ -181,6 +183,7 @@ export default function MyPage({ data }) {
               id="room"
               value={room}
               onChange={(e) => setAddress(e.target.value)}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             ></input>
           </div>
@@ -197,6 +200,7 @@ export default function MyPage({ data }) {
               id="time"
               value={time}
               onChange={(e) => setNum(e.target.value)}
+              required={true}
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             ></input>
           </div>
