@@ -2,7 +2,7 @@ import { useState } from "react";
 import MyLayout from "@/pages/component/layout";
 import { useRouter } from "next/router";
 import SessionCheck from "../../component/sessioncheck";
-import SideBar from "../../../pages/component/sidebar"; 
+import SideBar from "../../../pages/component/sidebar";
 import Footer from "../../../pages/component/footer";
 
 export default function AddStudent() {
@@ -17,8 +17,47 @@ export default function AddStudent() {
     Sdob: "",
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let errors = {};
+
+    if (!formData.Sidd) {
+      errors.Sidd = "id is required";
+    }
+
+    if (!formData.Sname) {
+      errors.Sname = "name is required";
+    }
+
+    if (!formData.Sprogram) {
+      errors.Sprogram = "program is required";
+    }
+
+    if (!formData.Sdep) {
+      errors.Sdep = "depertment is required";
+    }
+    if (!formData.Saddress) {
+      errors.Saddress = "address is required";
+    }
+    if (!formData.Snum) {
+      errors.Snum = "number is required";
+    }
+    if (!formData.Sdob) {
+      errors.Sdob = "date of birth is required";
+    }
+
+    return errors;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
 
     const response = await fetch("http://localhost:3000/admin/insertstudent/", {
       method: "POST",
@@ -42,6 +81,7 @@ export default function AddStudent() {
       Snum: "",
       Sdob: "",
     });
+    setErrors({});
   };
 
   const handleChange = (event) => {
@@ -54,9 +94,9 @@ export default function AddStudent() {
 
   return (
     <>
-    <SessionCheck />
+      <SessionCheck />
       <div>
-      <SideBar />
+        <SideBar />
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
           {/* heading */}
           <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
@@ -77,6 +117,9 @@ export default function AddStudent() {
                 onChange={handleChange}
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Sidd && (
+                <div class="text-red-500 text-sm">{errors.Sidd}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -88,6 +131,9 @@ export default function AddStudent() {
                 onChange={handleChange}
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Sname && (
+                <div class="text-red-500 text-sm">{errors.Sname}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -101,6 +147,9 @@ export default function AddStudent() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Sprogram && (
+                <div class="text-red-500 text-sm">{errors.Sprogram}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -114,6 +163,9 @@ export default function AddStudent() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Sdep && (
+                <div class="text-red-500 text-sm">{errors.Sdep}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -127,6 +179,9 @@ export default function AddStudent() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Saddress && (
+                <div class="text-red-500 text-sm">{errors.Saddress}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -138,8 +193,12 @@ export default function AddStudent() {
                 onChange={handleChange}
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs 
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          dark:text-whi
+          te dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Snum && (
+                <div class="text-red-500 text-sm">{errors.Snum}</div>
+              )}
             </label>
             <br />
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -153,6 +212,9 @@ export default function AddStudent() {
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              {errors.Sdob && (
+                <div class="text-red-500 text-sm">{errors.Sdob}</div>
+              )}
             </label>
             <br />
             {/* ...............submit button..................... */}
