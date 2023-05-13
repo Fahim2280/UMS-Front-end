@@ -9,7 +9,7 @@ const Logout = () => {
       try {
         const response = await fetch("http://localhost:3000/admin/signout", {
           method: "GET",
-          //   credentials: 'include', // send cookies along with the request
+          credentials: "include", // send cookies along with the request
         });
 
         if (response.ok) {
@@ -23,7 +23,9 @@ const Logout = () => {
     };
 
     logout();
-  }, [router]);
+  }, []); // add empty dependency array to run only once on mount
+
+  return null; // add a return statement to satisfy the component requirement
 };
 
 export default Logout;

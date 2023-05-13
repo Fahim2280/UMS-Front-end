@@ -62,14 +62,14 @@ export default function SignIn() {
 
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-10">
         <form onSubmit={handleSubmit}>
-          <h1 class="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
+          <h1 className="mb-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-1xl dark:text-white">
             Sign
-            <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">
+            <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">
               IN
             </mark>
           </h1>
           <div className="relative mb-4">
-            <label for="full-name" className="leading-7 text-sm text-gray-600">
+            <label htmlfor="full-name" className="leading-7 text-sm text-gray-600">
               Email
             </label>
 
@@ -86,12 +86,12 @@ export default function SignIn() {
             )}
           </div>
           <div className="relative mb-4">
-            <label for="pass" className="leading-7 text-sm text-gray-600">
+            <label htmlfor="pass" className="leading-7 text-sm text-gray-600">
               Password
             </label>
             <input
               type="password"
-              minlength="5"
+              minLength="5"
               maxLength="5"
               className={`w-full bg-white rounded border ${
                 formErrors.pass ? "border-red-500" : "border-gray-300"
@@ -113,9 +113,9 @@ export default function SignIn() {
             <div>
               <p
                 id="outlined_error_help"
-                class="mt-2 text-xs text-red-600 dark:text-red-400"
+                className="mt-2 text-xs text-red-600 dark:text-red-400"
               >
-                <span class="font-medium">{error}</span>
+                <span className="font-medium">{error}</span>
               </p>
             </div>
           )}
@@ -125,7 +125,7 @@ export default function SignIn() {
           <br />
           <a
             href="/admin/dashboard/addadmin"
-            class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+            className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
           >
             Register
           </a>
