@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Link from "next/link";
+<<<<<<< HEAD:ums-font-end/pages/faculty/Sidebar.js
 import Login from "../admin/signin";
+=======
+import Login from "./login";
+>>>>>>> Fahim:pages/faculty/Sidebar.js
 import Register from "../register";
 import AddNotice from "./addnotice";
-import UpdateNotice from "./updatenotice";
 import AllNotice from "./allNotice";
 import DeleteNotice from "./deletenotice";
 import RequestRoom from "./Requstroom";
@@ -15,25 +18,66 @@ import UpdateStudentGrade from "./updateStudentGrade";
 import DeleteStudentGrade from "./deleteStudentGrade";
 import AllStudentGrade from "./allStudentGrade";
 import AllFacultyInfo from "./allfacultyInfo";
+import Session from "./session";
 
 function Sidebar({ onButtonClick }) {
   return (
     <div className="sidebar">
-      <button onClick={() => onButtonClick(1)}>Add Notice</button>
-      <button onClick={() => onButtonClick(2)}>Show all Faculty Info</button>
-      <button onClick={() => onButtonClick(3)}>Upadate Notice</button>
-      <button onClick={() => onButtonClick(4)}>Delete Notice</button>
-      <button onClick={() => onButtonClick(5)}>Show all Notice</button>
-      <button onClick={() => onButtonClick(6)}>Request Room</button>
-      <button onClick={() => onButtonClick(7)}>Upadate Request Room</button>
-      <button onClick={() => onButtonClick(8)}>Delete Request Room</button>
-      <button onClick={() => onButtonClick(9)}>Show all Request Room</button>
-      <button onClick={() => onButtonClick(10)}>Add Student Grade</button>
-      <button onClick={() => onButtonClick(11)}>Update Student Grade</button>
-      <button onClick={() => onButtonClick(12)}>Delete Student Grade</button>
-      <button onClick={() => onButtonClick(13)}>Show all Student Grade</button>
-      <button onClick={() => onButtonClick(14)}>Sing In</button>
-      <button onClick={() => onButtonClick(15)}>Sing Up</button>
+      <button
+        onClick={() => onButtonClick(2)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Show all Faculty Info
+      </button>
+      <button
+        onClick={() => onButtonClick(1)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Add Notice
+      </button>
+
+      <button
+        onClick={() => onButtonClick(5)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Show all Notice
+      </button>
+      <button
+        onClick={() => onButtonClick(6)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Request Room
+      </button>
+      <button
+        onClick={() => onButtonClick(9)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Show all Request Room
+      </button>
+      <button
+        onClick={() => onButtonClick(10)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Add Student Grade
+      </button>
+      <button
+        onClick={() => onButtonClick(13)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Show all Student Grade
+      </button>
+      <button
+        onClick={() => onButtonClick(15)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Sign Up
+      </button>
+      <button
+        onClick={() => onButtonClick(16)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Sign Out
+      </button>
     </div>
   );
 }
@@ -81,11 +125,11 @@ function DataDisplay({ selectedButton }) {
   if (selectedButton === 13) {
     return <AllStudentGrade />;
   }
-  if (selectedButton === 14) {
-    return <Login />;
-  }
   if (selectedButton === 15) {
     return <Register />;
+  }
+  if (selectedButton === 16) {
+    return <Session />;
   }
   return (
     <div className="data-display">

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+<<<<<<< HEAD:ums-font-end/tailwind.config.js
     "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,4 +16,17 @@ module.exports = {
     },
   },
   plugins: [require("flowbite/plugin")],
+=======
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+>>>>>>> Fahim:tailwind.config.js
 };
