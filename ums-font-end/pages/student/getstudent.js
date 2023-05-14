@@ -1,59 +1,3 @@
-// import { useState, useEffect } from "react";
-
-// export default function getstudent() {
-//   const [data, setData] = useState(null);
-//   const [isLoading, setLoading] = useState(false);
-
-//   useEffect(() => {
-//     setLoading(true);
-//     fetch("http://localhost:3000/student/index")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         setData(data);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   if (isLoading) return <p>Loading</p>;
-//   if (!data) return <p>No Data</p>;
-
-//   return (
-//     <>
-//       <h2>Show Students</h2>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Id</th>
-//             <th>Name</th>
-//             <th>Department</th>
-//             <th>Staudent Id</th>
-//             <th>Address</th>
-//             <th>Phone</th>
-//             <th>Dath of Birth</th>
-//             <th>Program</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {data.map((student) => (
-//             <tr key={student.id}>
-//               <td>{student.Sid}</td>
-//               <td>{student.Sname}</td>
-//               <td>{student.Sdep}</td>
-//               <td>{student.Sidd}</td>
-//               <td>{student.Saddress}</td>
-//               <td>{student.Snum}</td>
-//               <td>{student.Sdob}</td>
-//               <td>{student.Sprogram}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </>
-//   );
-// }
-
-
-
 import Link from "next/link"
 import MyLayout from "./layout";
 import axios from "axios";
@@ -64,21 +8,27 @@ export default function getstudent({ data}) {
 
 
   return (
-      <>
+    <>
       <SessionCheck>
         <MyLayout/>
-       Get students
-      <ul>
-        {data.map(item => (
-          <li key={item.Sid}>
-
-        <Link href={"/student/students/"+item.Sid}>{item.Sname}</Link>
+        <section className="bg-gray-50 dark:bg-gray-900">
+          <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+        <h1 class="text-3xl font-bold mb-5">List of Students</h1>
+        <ul class="space-y-2">
+          {data.map(item => (
+            <li key={item.Sid} class="bg-white shadow overflow-hidden rounded-md">
+              <Link href={"/student/students/"+item.Sid} class="block px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
+                {item.Sname}
+              </Link>
             </li>
-        ))}
-      </ul>
+          ))}
+        </ul>
+        </div>
+        </section>
       </SessionCheck>
     </>
   );
+  
   }
 
  export async function getServerSideProps() {

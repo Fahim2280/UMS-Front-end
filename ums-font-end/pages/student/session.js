@@ -35,17 +35,27 @@ export default function Session() {
 
   return (
     <>
-          {email !== null ? (
-              <>
-          <button onClick={handleSignOut}>Sign out</button>
-        <Link href="/student/homepage">homepage</Link>
-            </>
+   
+      {email !== null ? (
+           <section className="bg-gray-50 dark:bg-gray-900">
+           <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+        <div className="flex justify-between items-center">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleSignOut}>Sign out</button>
+          <Link className="text-blue-500 hover:text-blue-800" href="/student/homepage">homepage</Link>
+        </div>
+        </div>
+        </section> 
       ) : (
-        <Link href="/login">
+        <section className="bg-gray-50 dark:bg-gray-900">
+           <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+        <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="/login">
           Sign in
         </Link>
+        </div>
+        </section> 
       )}
-
+      
     </>
   );
+  
 }

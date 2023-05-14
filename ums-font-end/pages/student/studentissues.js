@@ -21,32 +21,39 @@ const StudentIssues = () => {
 
   return (
     <SessionCheck>
-      <MyLayout/>
-    <div>
-      {studentData ? (
-        <div>
-          <h1>{studentData.Sname}</h1>
-          <p>Department: {studentData.Sdep}</p>
-          <p>ID: {studentData.Sidd}</p>
-          <p>Address: {studentData.Saddress}</p>
-          <p>Phone: {studentData.Snum}</p>
-          <p>Program: {studentData.Sprogram}</p>
-          <h2>Issues:</h2>
-          <ul>
-            {studentData.issues.map((issue) => (
-              <li key={issue.Isid}>
-                <h3>{issue.issueType}</h3>
-                <p>{issue.issue}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p>Loading data...</p>
-      )}
-    </div>
+      <MyLayout />
+      <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
+       
+      <div className="flex flex-col items-center justify-center mt-10">
+        {studentData ? (
+          <div className="bg-white rounded-lg p-8">
+            <h1 className="text-3xl font-bold text-blue-800">{studentData.Sname}</h1>
+            <p className="text-lg text-gray-700">Department: {studentData.Sdep}</p>
+            <p className="text-lg text-gray-700">ID: {studentData.Sidd}</p>
+            <p className="text-lg text-gray-700">Address: {studentData.Saddress}</p>
+            <p className="text-lg text-gray-700">Phone: {studentData.Snum}</p>
+            <p className="text-lg text-gray-700">Program: {studentData.Sprogram}</p>
+            <h2 className="text-2xl font-bold mt-6 mb-2 text-green-800">Issues:</h2>
+            <ul className="list-disc list-inside">
+              {studentData.issues.map((issue) => (
+                <li key={issue.Isid}>
+                  <h3 className="text-lg font-bold text-purple-800">{issue.issueType}</h3>
+                  <p className="text-lg text-gray-700">{issue.issue}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p className="text-red-700">Loading data...</p>
+        )}
+      </div>
+      </div>
+        </section> 
     </SessionCheck>
   );
+  
+  
 };
 
 export default StudentIssues;

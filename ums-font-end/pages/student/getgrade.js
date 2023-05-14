@@ -7,31 +7,36 @@ export default function getgrade({ data}) {
 
 
   return (
-      <>
+    <>
       <SessionCheck>
         <MyLayout/>
-     <h2>Show All grades</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>year</th>
-            <th>exam</th>
-            <th>grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((student) => (
-            <tr key={student.Gid}>
-                <td>{student.year}</td>
-              <td>{student.xm}</td>
-              <td>{student.grade}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <section className="min-h-screen dark:bg-gray-900">
+          <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+            <h2 className="text-2xl font-bold">Show All grades</h2>
+            <table className="table-auto w-full mt-8">
+              <thead>
+                <tr>
+                  <th className="px-4 py-2 text-left">Year</th>
+                  <th className="px-4 py-2 text-left">Exam</th>
+                  <th className="px-4 py-2 text-left">Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((student) => (
+                  <tr key={student.Gid}>
+                    <td className="border px-4 py-2">{student.year}</td>
+                    <td className="border px-4 py-2">{student.xm}</td>
+                    <td className="border px-4 py-2">{student.grade}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
       </SessionCheck>
     </>
   );
+
   }
 
  export async function getServerSideProps() {

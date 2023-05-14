@@ -51,110 +51,109 @@ export default function addinfo() {
             console.log(error)
 
         }
-
-
     };
 
     return (
-      
         <>
         <SessionCheck>
             <MyLayout/>
-            <h1>Add info</h1>
-            {success}
-            <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
-                <div>
-                    <label htmlFor="Sname">Name</label>
-                    <input
-                        type="text"
-                        id="Sname"
-                        {...register('Sname', { required: true })}
-                    />
-                    {errors.Sname && <p>Name is required</p>}
-                </div>
-                <div>
-                    <label htmlFor="Sdep">department</label>
-                    <input
-                        type="text"
-                        id="Sdep"
-                        {...register('Sdep', { required: true })}
-                    />
-                    {errors.Sdep && <p>department is required</p>}
-                </div>
-                <div>
-                    <label htmlFor="Sidd">studentId</label>
-                    <input
-                        type="text"
-                        id="Sidd"
-                        {...register('Sidd', { required: true, pattern: /^[0-9]{2}-[0-9]{5}-[1-3]{1}$/ })}
-                    />
-                    {errors.Sidd && (
-                        <p>
-                            {errors.Sidd.type === 'required'
-                                ? 'student id is required'
-                                : 'Invalid studentId '}
-                        </p>
-                    )}
-                </div>
-                <div>
-                    <label htmlFor="Saddress">address</label>
-                    <textarea id="Saddress" {...register('Saddress', { required: true })} />
-                    {errors.Saddress && <p>address is required</p>}
-                </div>
-
-                <div>
-                    <label htmlFor="Snum">phone</label>
-                    <input
-                        type="text"
-                        id="Snum"
-                        {...register('Snum', { required: true, pattern: /^(\+88)?01[0-9]{9}$/i })}
-                    />
-                    {errors.Snum && (
-                        <p>
-                            {errors.Snum.type === 'required'
-                                ? 'phone is required'
-                                : 'Invalid phone number'}
-                        </p>
-                    )}
-                </div>
-                <div>
-                    <label htmlFor="Sprogram">program</label>
-                    <input
-                        type="text"
-                        id="Sprogram"
-                        {...register('Sprogram', { required: true })}
-                    />
-                    {errors.Sprogram && <p>program is required</p>}
-                </div>
-                {/* <div>
-                    <label htmlFor="Sdob">dob</label>
-                    <input
-                        type="text"
-                        id="Sdob"
-                        {...register('Sdob', { required: true })}
-                    />
-                    {errors.Sdob && <p>dob is required</p>}
-                </div> */}
-                <div>
-          <label htmlFor="Sdob">Date of Birth</label>
-          <Controller
-            control={control}
-            name="Sdob"
-            rules={{ required: true }}
-            render={({ field }) => (
-              <DatePicker
-                id="Sdob"
-                {...field}
-                selected={field.value}
-                dateFormat="yyyy-MM-dd"
-              />
-            )}
-          />
-          {errors.dob && <p>Date of Birth is required</p>}
-        </div>
-                <button type="submit">Submit</button>
-            </form>
-            <Session/>
+            <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
+    
+            <h1 className="text-xl font-bold mb-4">Add info</h1>
+{success}
+<form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data" className="max-w-md">
+    <div className="mb-4">
+        <label htmlFor="Sname" className="block font-bold">Name</label>
+        <input
+            type="text"
+            id="Sname"
+            {...register('Sname', { required: true })}
+            className="border border-gray-400 p-2 w-full rounded-lg"
+        />
+        {errors.Sname && <p className="text-red-500 mt-2">Name is required</p>}
+    </div>
+    <div className="mb-4">
+        <label htmlFor="Sdep" className="block font-bold">Department</label>
+        <input
+            type="text"
+            id="Sdep"
+            {...register('Sdep', { required: true })}
+            className="border border-gray-400 p-2 w-full rounded-lg"
+        />
+        {errors.Sdep && <p className="text-red-500 mt-2">Department is required</p>}
+    </div>
+    <div className="mb-4">
+        <label htmlFor="Sidd" className="block font-bold">Student ID</label>
+        <input
+            type="text"
+            id="Sidd"
+            {...register('Sidd', { required: true, pattern: /^[0-9]{2}-[0-9]{5}-[1-3]{1}$/ })}
+            className="border border-gray-400 p-2 w-full rounded-lg"
+        />
+        {errors.Sidd && (
+            <p className="text-red-500 mt-2">
+                {errors.Sidd.type === 'required'
+                    ? 'Student ID is required'
+                    : 'Invalid Student ID'}
+            </p>
+        )}
+    </div>
+    <div className="my-4">
+  <label htmlFor="Saddress" className="block font-bold mb-2">address</label>
+  <textarea id="Saddress" className="border rounded py-2 px-3 w-full" {...register('Saddress', { required: true })} />
+  {errors.Saddress && <p className="text-red-500 mt-2">address is required</p>}
+</div>
+<div className="my-4">
+  <label htmlFor="Snum" className="block font-bold mb-2">phone</label>
+  <input
+    type="text"
+    id="Snum"
+    className="border rounded py-2 px-3 w-full"
+    {...register('Snum', { required: true, pattern: /^(\+88)?01[0-9]{9}$/i })}
+  />
+  {errors.Snum && (
+    <p className="text-red-500 mt-2">
+      {errors.Snum.type === 'required'
+        ? 'phone is required'
+        : 'Invalid phone number'}
+    </p>
+  )}
+</div>
+<div className="my-4">
+  <label htmlFor="Sprogram" className="block font-bold mb-2">program</label>
+  <input
+    type="text"
+    id="Sprogram"
+    className="border rounded py-2 px-3 w-full"
+    {...register('Sprogram', { required: true })}
+  />
+  {errors.Sprogram && <p className="text-red-500 mt-2">program is required</p>}
+</div>
+<div className="my-4">
+  <label htmlFor="Sdob" className="block font-bold mb-2">Date of Birth</label>
+  <Controller
+    control={control}
+    name="Sdob"
+    rules={{ required: true }}
+    render={({ field }) => (
+      <DatePicker
+        id="Sdob"
+        {...field}
+        selected={field.value}
+        dateFormat="yyyy-MM-dd"
+        className="border rounded py-2 px-3 w-full"
+      />
+    )}
+  />
+  {errors.Sdob && <p className="text-red-500 mt-2">Date of Birth is required</p>}
+</div>
+<button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Submit
+</button>
+</form>
+</div>
+        </section> 
             </SessionCheck>
         </>
     );

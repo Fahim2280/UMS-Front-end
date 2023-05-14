@@ -4,7 +4,6 @@ import { useState } from "react"
 import SessionCheck from './sessioncheck';
 import MyLayout from './layout';
 
-
 export default function addissue() {
     const {
         register,
@@ -54,30 +53,37 @@ export default function addissue() {
         <>
           <SessionCheck>
             <MyLayout/>
-            <h1>add issue</h1>
-            {success}
+            <section class="min-h-screen dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
+    
+            <h1 className="text-3xl font-bold mb-4">Add Issue</h1>
+            {success && <p className="text-green-600 mb-4">{success}</p>}
             <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
               
-                <div>
-                    <label htmlFor="issueType">issue type</label>
+                <div className="mb-4">
+                    <label htmlFor="issueType" className="block font-medium text-white mb-2">Issue Type</label>
                     <input
                         type="issueType"
                         id="issueType"
                         {...register('issueType')}
+                        className="px-3 py-2 border rounded w-full"
                     />
                     
                 </div>
-                <div>
-                    <label htmlFor="issue">issue</label>
+                <div className="mb-4">
+                    <label htmlFor="issue" className="block font-medium text-white mb-2">Issue</label>
                     <input
                         type="issue"
                         id="issue"
                         {...register('issue')}
+                        className="px-3 py-2 border rounded w-full"
                     />
                 </div>
                
-                <button type="submit">Submit</button>
+                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Submit</button>
             </form>
+            </div>
+        </section> 
             </SessionCheck>
         </>
     );
