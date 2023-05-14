@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import SessionCheck from './sessioncheck';
 
 const UploadAssignment = () => {
   const [assignmentName, setAssignmentName] = useState('');
@@ -52,6 +53,7 @@ const UploadAssignment = () => {
   };
 
   return (
+    <SessionCheck>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="assignmentName">Assignment Name:</label>
@@ -72,6 +74,7 @@ const UploadAssignment = () => {
       <button type="submit">Submit</button>
       {success && <p>{success}</p>} {/* display success message */}
     </form>
+    </SessionCheck>
   );
 };
 

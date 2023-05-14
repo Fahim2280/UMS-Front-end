@@ -1,11 +1,13 @@
 
 import axios from "axios";
 import { useRouter } from 'next/router'
+import SessionCheck from "../sessioncheck";
 
 export default function UserProfile({ data } ) {
 const router = useRouter();
     return (
       <>
+     <SessionCheck>
  {data.map(item => (
           <li key={item.infoid}>
             Id:  {item.Sid}
@@ -25,7 +27,7 @@ const router = useRouter();
       <button type="button" onClick={() => router.back()}>
       Click here to go back
     </button>
-
+    </SessionCheck>
       </>
     )
   }

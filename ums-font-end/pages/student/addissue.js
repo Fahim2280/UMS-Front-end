@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import axios from "axios"
 import { useState } from "react"
+import SessionCheck from './sessioncheck';
 
 
 export default function addissue() {
@@ -50,7 +51,7 @@ export default function addissue() {
     };
     return (
         <>
-          
+          <SessionCheck>
             <h1>add issue</h1>
             {success}
             <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
@@ -75,6 +76,7 @@ export default function addissue() {
                
                 <button type="submit">Submit</button>
             </form>
+            </SessionCheck>
         </>
     );
 }

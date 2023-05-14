@@ -59,6 +59,7 @@
 
 import axios from "axios";
 import { useState } from "react";
+import SessionCheck from "./sessioncheck";
 
 
 export default function getdrop({ data}) {
@@ -67,6 +68,7 @@ export default function getdrop({ data}) {
 
   return (
       <>
+      <SessionCheck/>
  <h2>Show All drop applications</h2>
        <table>
          <thead>

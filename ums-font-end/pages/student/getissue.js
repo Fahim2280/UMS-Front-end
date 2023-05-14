@@ -65,6 +65,7 @@
 import Link from "next/link"
 // import MyLayout from "./layout";
 import axios from "axios";
+import SessionCheck from "./sessioncheck";
 
 
 export default function getissue({ data}) {
@@ -72,6 +73,7 @@ export default function getissue({ data}) {
 
   return (
       <>
+      <SessionCheck>
        Get issue
       <ul>
         {data.map(item => (
@@ -81,6 +83,7 @@ export default function getissue({ data}) {
             </li>
         ))}
       </ul>
+      </SessionCheck>
     </>
   );
   }

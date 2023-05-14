@@ -4,6 +4,7 @@ import { useState } from "react"
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import SessionCheck from './sessioncheck';
+import Session from './session';
 
 export default function addinfo() {
     const {
@@ -56,7 +57,7 @@ export default function addinfo() {
     return (
       
         <>
-        <SessionCheck/>
+        <SessionCheck>
             <h1>Add info</h1>
             {success}
             <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
@@ -151,6 +152,8 @@ export default function addinfo() {
         </div>
                 <button type="submit">Submit</button>
             </form>
+            <Session/>
+            </SessionCheck>
         </>
     );
 }

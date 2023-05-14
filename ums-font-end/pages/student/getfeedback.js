@@ -52,6 +52,7 @@
 import Link from "next/link"
 // import MyLayout from "./layout";
 import axios from "axios";
+import SessionCheck from "./sessioncheck";
 
 
 export default function getfeedback({ data}) {
@@ -59,6 +60,7 @@ export default function getfeedback({ data}) {
 
   return (
       <>
+      <SessionCheck>
      <h2>Show All feedback</h2>
       <table>
         <thead>
@@ -76,6 +78,7 @@ export default function getfeedback({ data}) {
           ))}
         </tbody>
       </table>
+      </SessionCheck>
     </>
   );
   }

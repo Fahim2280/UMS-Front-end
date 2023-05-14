@@ -148,6 +148,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import axios from 'axios';
+import SessionCheck from './sessioncheck';
 
 const UpdateIssue = () => {
   const router = useRouter();
@@ -179,6 +180,7 @@ const UpdateIssue = () => {
   };
 
   return (
+    <SessionCheck>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="issueType">Issue Type:</label>
@@ -205,6 +207,7 @@ const UpdateIssue = () => {
       </div>
       <button type="submit">Update</button>
     </form>
+    </SessionCheck>
   );
 };
 

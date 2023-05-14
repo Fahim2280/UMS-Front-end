@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import axios from "axios"
 import { useState } from "react"
+import SessionCheck from './sessioncheck';
 
 
 export default function addfeedback() {
@@ -41,6 +42,7 @@ export default function addfeedback() {
     };
     return (
         <>
+        <SessionCheck>
           
             <h1>add feedback</h1>
             {success}
@@ -58,6 +60,7 @@ export default function addfeedback() {
                
                 <button type="submit">Submit</button>
             </form>
+            </SessionCheck>
         </>
     );
 }

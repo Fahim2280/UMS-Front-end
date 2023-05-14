@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -7,6 +7,13 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const router = useRouter();
+
+  useEffect(() => {
+    const session = sessionStorage.getItem('email');
+    if (session) {
+      router.push('/student/homepage');
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -23,8 +30,8 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:3000/logincon/signin', data);
       if (response.data.message === 'success') {
-        sessionStorage.setItem('email', response.data);
-        router.push('http://localhost:7000/student/addInfo');
+        sessionStorage.setItem('email', JSON.stringify(response.data));
+        router.push('/student/homepage');
       } else {
         setErrors({ login: 'Invalid email or password' });
       }

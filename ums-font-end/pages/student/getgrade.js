@@ -1,4 +1,5 @@
 import axios from "axios";
+import SessionCheck from "./sessioncheck";
 
 
 export default function getgrade({ data}) {
@@ -6,6 +7,7 @@ export default function getgrade({ data}) {
 
   return (
       <>
+      <SessionCheck>
      <h2>Show All grades</h2>
       <table>
         <thead>
@@ -25,6 +27,7 @@ export default function getgrade({ data}) {
           ))}
         </tbody>
       </table>
+      </SessionCheck>
     </>
   );
   }

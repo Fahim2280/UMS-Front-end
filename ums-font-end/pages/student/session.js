@@ -22,7 +22,7 @@ export default function Session() {
     const handleSignOut = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.get('http://localhost:3000/admin/signout')
+            const response = await axios.get('http://localhost:3000/logincon/signout')
             console.log(response.data)
             sessionStorage.removeItem('email');
             setEmail(null);
@@ -37,7 +37,6 @@ export default function Session() {
     <>
           {email !== null ? (
               <>
-          <>{email}</>
           <button onClick={handleSignOut}>Sign out</button>
         <Link href="/student/homepage">homepage</Link>
             </>

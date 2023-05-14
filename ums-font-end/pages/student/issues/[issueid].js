@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useRouter } from 'next/router'
 import { useState } from "react";
-
+import SessionCheck from "../sessioncheck";
 
 export default function UserProfile({ data } ) {
 const router = useRouter();
@@ -10,6 +10,7 @@ const [dropData, setDropData] = useState(data);
 
     return (
       <>
+      <SessionCheck>
 
  {data.map(item => (
           <li key={item.issueid}>
@@ -29,7 +30,7 @@ const [dropData, setDropData] = useState(data);
       <button type="button" onClick={() => router.back()}>
       Click here to go back
     </button>
-
+    </SessionCheck>
       </>
     )
     function handleSubmit(Isid) {
