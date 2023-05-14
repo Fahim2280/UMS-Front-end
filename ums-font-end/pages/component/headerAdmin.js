@@ -2,18 +2,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Session from "./session";
 
-const navigation = [
-  { name: "Dashboard", href: "/admin/dashboard/" },
-  { name: "x", href: "#" },
-  { name: "x", href: "#" },
-  { name: "x", href: "#" },
-];
+
 
 export default function Header() {
   //const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
+    <>
     <header>
       <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
@@ -29,12 +26,13 @@ export default function Header() {
           </a>
 
           <div class="flex items-center lg:order-2">
-            <a
-              href="/admin/dashboard/logout"
+            <Session/>
+            {/* <a
+              href="../component/session"
               class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
             >
               Logout
-            </a>
+            </a> */}
 
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -105,5 +103,6 @@ export default function Header() {
         </div>
       </nav>
     </header>
+    </>
   );
 }

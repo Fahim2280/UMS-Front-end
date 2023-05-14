@@ -24,7 +24,7 @@ export default function Session() {
       console.log(response.data);
       sessionStorage.removeItem("email");
       setEmail(null);
-      router.push("/admin/dashboard/addadmin");
+      router.push("../");
     } catch (error) {
       console.error(error);
     }
@@ -34,9 +34,12 @@ export default function Session() {
     <>
       {email !== null ? (
         <>
-          <>{email}</>
-          <button onClick={handleSignOut}>Sign out</button>
-          <Link href="/admin/dashboard">DashBoard</Link>
+          <button
+            onClick={handleSignOut}
+            class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+          >
+            Log out
+          </button>
         </>
       ) : (
         <Link href="/admin/dashboard/addadmin">Sign in</Link>

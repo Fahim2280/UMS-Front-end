@@ -27,7 +27,6 @@ export default function SignIn() {
           }
         );
         console.log("res: " + response.data);
-
         sessionStorage.setItem("email", response.data);
         router.push("/admin/dashboard");
       } catch (error) {
