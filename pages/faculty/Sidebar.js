@@ -1,10 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
-<<<<<<< HEAD:ums-font-end/pages/faculty/Sidebar.js
-import Login from "../admin/signin";
-=======
+
 import Login from "./login";
->>>>>>> Fahim:pages/faculty/Sidebar.js
+
 import Register from "../register";
 import AddNotice from "./addnotice";
 import AllNotice from "./allNotice";
