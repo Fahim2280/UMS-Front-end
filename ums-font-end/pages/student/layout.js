@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from 'next/image'
 
 export default function MyLayout(props)   
 {
@@ -10,15 +9,22 @@ export default function MyLayout(props)
         <Link href="addInfo"> <button>Add Info</button> </Link>
         <Link href="showInfo"> <button>Show Info</button> </Link>
         {/* <Link href="updateInfo"> <button>Update Info</button> </Link> */}
-        <Link href="feedback"> <button>feedback</button> </Link>
+        <Link href="getfeedback"> <button>feedback</button> </Link>
         <Link href="showCurriculum"> <button>Show Curriculum</button> </Link>
         <Link href="showResults"> <button>Show Result</button> </Link>
         <Link href="paymentDetails"> <button>Payment Details</button> </Link>
-        <Link href="showSections"> <button>Show Section</button> </Link>
-        <Link href="showCourse"> <button>Show Courses</button> </Link>
         <Link href="dropApp"> <button>Drop Application</button></Link>
         <Link href="showNotice"> <button>Show Notice</button> </Link>
-        <Link href="/login"> <button>logout</button> </Link>
+        <Link href="addfeedback"> <button>Add Feedback</button> </Link>
+        <Link href="addissue"> <button>Add Issue</button> </Link>
+        <Link href="getdrop"> <button>Get Drop</button> </Link>
+        <Link href="getgrade"> <button>Get Grade</button> </Link>
+        <Link href="getissue"> <button>Get Issue</button> </Link>
+        <Link href="getstudent"> <button>Get Student</button> </Link>
+        <Link href="homepage"> <button>Home Page</button> </Link>
+        <Link href="studentissues"> <button>Student Issue</button> </Link>
+        <Link href="upassign"> <button>Upload assignment</button> </Link>
+        
 
 
         </nav>

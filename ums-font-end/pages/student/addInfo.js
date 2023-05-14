@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import SessionCheck from './sessioncheck';
 import Session from './session';
+import MyLayout from './layout';
 
 export default function addinfo() {
     const {
@@ -58,6 +59,7 @@ export default function addinfo() {
       
         <>
         <SessionCheck>
+            <MyLayout/>
             <h1>Add info</h1>
             {success}
             <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">

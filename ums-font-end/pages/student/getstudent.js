@@ -55,7 +55,7 @@
 
 
 import Link from "next/link"
-// import MyLayout from "./layout";
+import MyLayout from "./layout";
 import axios from "axios";
 import SessionCheck from "./sessioncheck";
 
@@ -66,6 +66,7 @@ export default function getstudent({ data}) {
   return (
       <>
       <SessionCheck>
+        <MyLayout/>
        Get students
       <ul>
         {data.map(item => (

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import SessionCheck from './sessioncheck';
+import MyLayout from './layout';
 
 const UploadAssignment = () => {
   const [assignmentName, setAssignmentName] = useState('');
@@ -54,6 +55,7 @@ const UploadAssignment = () => {
 
   return (
     <SessionCheck>
+      <MyLayout/>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="assignmentName">Assignment Name:</label>

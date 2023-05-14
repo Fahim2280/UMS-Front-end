@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-
+import SessionCheck from './sessioncheck';
+import MyLayout from './layout';
 const StudentIssues = () => {
   const [studentData, setStudentData] = useState(null);
 
@@ -20,6 +20,8 @@ const StudentIssues = () => {
   }, []);
 
   return (
+    <SessionCheck>
+      <MyLayout/>
     <div>
       {studentData ? (
         <div>
@@ -43,6 +45,7 @@ const StudentIssues = () => {
         <p>Loading data...</p>
       )}
     </div>
+    </SessionCheck>
   );
 };
 

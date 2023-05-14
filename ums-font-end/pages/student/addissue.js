@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import axios from "axios"
 import { useState } from "react"
 import SessionCheck from './sessioncheck';
+import MyLayout from './layout';
 
 
 export default function addissue() {
@@ -52,6 +53,7 @@ export default function addissue() {
     return (
         <>
           <SessionCheck>
+            <MyLayout/>
             <h1>add issue</h1>
             {success}
             <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">

@@ -1,5 +1,6 @@
 import axios from "axios";
 import SessionCheck from "./sessioncheck";
+import MyLayout from "./layout";
 
 
 export default function getgrade({ data}) {
@@ -8,6 +9,7 @@ export default function getgrade({ data}) {
   return (
       <>
       <SessionCheck>
+        <MyLayout/>
      <h2>Show All grades</h2>
       <table>
         <thead>

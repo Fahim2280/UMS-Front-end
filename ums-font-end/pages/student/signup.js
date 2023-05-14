@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import axios from "axios"
-import { useState } from "react"
+import { useState,useEffect } from "react"
+import { useRouter } from 'next/router';
 
 
 export default function signup() {
@@ -10,6 +11,15 @@ export default function signup() {
         formState: { errors },
         reset,
     } = useForm();
+    const router = useRouter();
+
+    useEffect(() => {
+        const session = sessionStorage.getItem('email');
+        if (session) {
+          router.push('/student/homepage');
+        }
+      }, []);
+    
     const [success, setSuccess] = useState('')
     const onSubmit = async (data) => {
         console.log(data);

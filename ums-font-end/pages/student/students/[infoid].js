@@ -1,13 +1,14 @@
-
 import axios from "axios";
 import { useRouter } from 'next/router'
 import SessionCheck from "../sessioncheck";
+import MyLayout from "../layout";
 
 export default function UserProfile({ data } ) {
 const router = useRouter();
     return (
       <>
      <SessionCheck>
+     <MyLayout/>
  {data.map(item => (
           <li key={item.infoid}>
             Id:  {item.Sid}

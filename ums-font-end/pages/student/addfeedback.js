@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import axios from "axios"
 import { useState } from "react"
 import SessionCheck from './sessioncheck';
+import MyLayout from './layout';
 
 
 export default function addfeedback() {
@@ -43,6 +44,7 @@ export default function addfeedback() {
     return (
         <>
         <SessionCheck>
+            <MyLayout/>
           
             <h1>add feedback</h1>
             {success}
