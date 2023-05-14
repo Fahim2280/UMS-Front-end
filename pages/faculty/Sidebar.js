@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
+
 import Login from "./login";
+
 import Register from "../register";
 import AddNotice from "./addnotice";
 import AllNotice from "./allNotice";

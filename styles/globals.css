@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD:ums-font-end/styles/globals.css
+=======
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -108,3 +110,4 @@ a {
     color-scheme: dark;
   }
 }
+>>>>>>> Fahim:styles/globals.css
